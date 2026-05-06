@@ -1,3 +1,5 @@
+import SectionHeader from './SectionHeader';
+
 const STUDIOS = [
   {
     city: 'Seoul',
@@ -28,42 +30,33 @@ const STUDIOS = [
 
 export default function Studios() {
   return (
-    <section
-      id="studios"
-      className="relative py-28 lg:py-40 bg-elev/40 border-t border-line"
-    >
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
-        <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 font-mono text-[10px] tracking-[0.18em] uppercase">
-          <div className="col-span-6 lg:col-span-2 text-ink">— 06 / Locations</div>
-          <div className="hidden lg:block col-span-7 text-mute">
-            Two cities, one studio
-          </div>
-          <div className="col-span-6 lg:col-span-3 lg:text-right text-mute">
-            KR · DE
-          </div>
-        </div>
+    <section id="studios" className="relative bg-elev/40">
+      <SectionHeader
+        no="06"
+        label="Locations"
+        caption="Two cities, one studio"
+        meta="KR · DE"
+        headline={
+          <>
+            Recording on{' '}
+            <span className="italic">two continents</span>.
+          </>
+        }
+      />
 
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-20">
-          <div className="col-span-12 lg:col-span-9 lg:col-start-2">
-            <h2 className="font-display text-[clamp(2.2rem,5vw,4.6rem)] leading-[1.02] tracking-[-0.02em] text-ink">
-              Recording on{' '}
-              <span className="italic">two continents</span>.
-            </h2>
-          </div>
-        </div>
-
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="border-t border-line-2">
           {STUDIOS.map((studio, idx) => (
             <article
               key={studio.city}
-              className="group grid grid-cols-12 gap-6 lg:gap-8 py-12 lg:py-16 border-b border-line"
+              className="group grid grid-cols-12 gap-6 lg:gap-8 py-10 lg:py-16 border-b border-line"
             >
               <div className="col-span-12 lg:col-span-1 font-mono text-[11px] tracking-[0.18em] uppercase text-mute">
                 {String(idx + 1).padStart(2, '0')}
               </div>
 
               <div className="col-span-12 lg:col-span-5">
-                <h3 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.03em] text-ink">
+                <h3 className="font-display text-[clamp(2.6rem,7vw,6rem)] leading-[0.95] tracking-[-0.03em] text-ink">
                   {studio.city}
                 </h3>
                 <p className="font-kr-display text-[14px] text-ink-soft mt-3 tracking-[0.04em]">
@@ -75,13 +68,13 @@ export default function Studios() {
                 </div>
               </div>
 
-              <div className="col-span-12 lg:col-span-3 space-y-6">
+              <div className="col-span-12 md:col-span-6 lg:col-span-3 space-y-6">
                 <Detail label="Coordinates" value={studio.coords} />
                 <Detail label="Facility" value={studio.rooms} />
                 <Detail label="Address" value={studio.address} sub={studio.krAddress} />
               </div>
 
-              <div className="col-span-12 lg:col-span-3 space-y-6">
+              <div className="col-span-12 md:col-span-6 lg:col-span-3 space-y-6">
                 {studio.contacts.map((c) => (
                   <Detail key={c.label} label={c.label} value={c.value} mono />
                 ))}
@@ -116,7 +109,11 @@ function Detail({
       <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-1.5">
         — {label}
       </div>
-      <div className={`text-[14px] text-ink leading-[1.55] ${mono ? 'font-mono tracking-tight' : ''}`}>
+      <div
+        className={`text-[13.5px] text-ink leading-[1.55] break-words ${
+          mono ? 'font-mono tracking-tight' : ''
+        }`}
+      >
         {value}
       </div>
       {sub && (

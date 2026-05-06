@@ -1,32 +1,25 @@
+import SectionHeader from './SectionHeader';
+
 export default function About() {
   return (
-    <section id="about" className="relative py-28 lg:py-40 overflow-hidden border-t border-line">
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
-        {/* Section header strip */}
-        <div className="grid grid-cols-12 gap-6 mb-16 lg:mb-24 font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
-          <div className="col-span-6 lg:col-span-2">
-            <div className="text-ink">— 01 / Studio</div>
-          </div>
-          <div className="hidden lg:block col-span-7" />
-          <div className="col-span-6 lg:col-span-3 lg:text-right text-ink-soft/70">
-            Seoul · Berlin
-          </div>
-        </div>
+    <section id="about" className="relative overflow-hidden">
+      <SectionHeader
+        no="01"
+        label="Studio"
+        caption="A house for global storytellers"
+        meta="01 / 07"
+        headline={
+          <>
+            A studio for{' '}
+            <span className="italic">global storytellers</span>,
+            <br />
+            listening since 1995.
+          </>
+        }
+      />
 
-        <div className="grid grid-cols-12 gap-8 lg:gap-12">
-          {/* Headline */}
-          <div className="col-span-12 lg:col-span-8 lg:col-start-2">
-            <h2 className="font-display text-[clamp(2.2rem,5.4vw,5rem)] leading-[1.02] tracking-[-0.02em] text-ink">
-              A studio for{' '}
-              <span className="italic">global storytellers</span>,
-              <br />
-              listening since 1995.
-            </h2>
-          </div>
-        </div>
-
-        {/* Body row */}
-        <div className="mt-20 lg:mt-28 grid grid-cols-12 gap-8 lg:gap-12">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
+        <div className="grid grid-cols-12 gap-8 lg:gap-12 mt-4">
           <div className="col-span-12 lg:col-span-2 lg:col-start-2">
             <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
               — Note
@@ -81,11 +74,10 @@ export default function About() {
           </div>
         </div>
 
-        {/* Pull quote */}
-        <div className="mt-28 lg:mt-36 grid grid-cols-12 gap-8">
+        <div className="mt-24 lg:mt-32 grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-9 lg:col-start-3">
-            <div className="border-l border-line-2 pl-8 lg:pl-12">
-              <p className="font-display text-[clamp(1.6rem,3vw,2.6rem)] text-ink leading-[1.42] tracking-[-0.01em]">
+            <div className="border-l border-line-2 pl-6 lg:pl-12">
+              <p className="font-display text-[clamp(1.5rem,3vw,2.6rem)] text-ink leading-[1.42] tracking-[-0.01em]">
                 <span className="italic">We don&apos;t dub.</span> We translate
                 emotion across cultures and preserve the original creative
                 intent — that&apos;s the bar we hold for every title that

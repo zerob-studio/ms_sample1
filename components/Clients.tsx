@@ -1,3 +1,5 @@
+import SectionHeader from './SectionHeader';
+
 const CLIENTS = [
   'CD Projekt Red',
   'Larian Studios',
@@ -36,30 +38,22 @@ const QUOTES = [
 
 export default function Clients() {
   return (
-    <section id="clients" className="relative py-28 lg:py-40 border-t border-line">
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
-        <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 font-mono text-[10px] tracking-[0.18em] uppercase">
-          <div className="col-span-6 lg:col-span-2 text-ink">— 05 / Trust</div>
-          <div className="hidden lg:block col-span-7 text-mute">
-            Studios &amp; publishers, worldwide
-          </div>
-          <div className="col-span-6 lg:col-span-3 lg:text-right text-mute">
-            200+ partners
-          </div>
-        </div>
+    <section id="clients" className="relative">
+      <SectionHeader
+        no="05"
+        label="Trust"
+        caption="Studios & publishers, worldwide"
+        meta="200+ partners"
+        headline={
+          <>
+            From Seoul to Berlin,{' '}
+            <span className="italic">trusted by</span>
+          </>
+        }
+      />
 
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-16">
-          <div className="col-span-12 lg:col-span-9 lg:col-start-2">
-            <h2 className="font-display text-[clamp(2.2rem,5vw,4.6rem)] leading-[1.02] tracking-[-0.02em] text-ink">
-              From Seoul to Berlin,{' '}
-              <span className="italic">trusted by</span>
-            </h2>
-          </div>
-        </div>
-      </div>
-
-      {/* Marquee — quiet B&W */}
-      <div className="relative overflow-hidden border-y border-line py-8 mb-20 bg-elev/30">
+      {/* Marquee */}
+      <div className="relative overflow-hidden border-y border-line py-8 mb-16 lg:mb-20 bg-elev/30">
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
@@ -81,23 +75,23 @@ export default function Clients() {
       </div>
 
       {/* Testimonials */}
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line">
           {QUOTES.map((quote, idx) => (
             <figure
               key={idx}
-              className="bg-bg p-8 lg:p-12 hover:bg-elev/40 transition-colors duration-700"
+              className="bg-bg p-7 md:p-10 lg:p-12 hover:bg-elev/40 transition-colors duration-700"
             >
-              <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-8">
+              <div className="flex items-baseline justify-between font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-7">
                 <span>Testimony 0{idx + 1}</span>
                 <span>{quote.project}</span>
               </div>
-              <blockquote className="font-display italic text-[20px] lg:text-[24px] text-ink leading-[1.55] tracking-[-0.005em]">
+              <blockquote className="font-display italic text-[18px] md:text-[22px] lg:text-[24px] text-ink leading-[1.55] tracking-[-0.005em]">
                 <span className="text-ink-soft not-italic">“</span>
                 {quote.body}
                 <span className="text-ink-soft not-italic">”</span>
               </blockquote>
-              <figcaption className="mt-10 flex items-center gap-3 font-mono text-[10px] tracking-[0.18em] uppercase">
+              <figcaption className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.18em] uppercase">
                 <span className="h-px w-8 bg-line-2" />
                 <span className="text-ink">{quote.author}</span>
                 <span className="text-mute">/</span>

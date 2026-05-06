@@ -123,6 +123,19 @@ body {
   animation: blink 1.6s steps(1, end) infinite;
 }
 
+/* Section chapter strip — clear visual divider between sections */
+.chapter-strip {
+  position: relative;
+  border-top: 1px solid var(--color-line-strong);
+  border-bottom: 1px solid var(--color-line);
+  background: rgba(237, 233, 222, 0.015);
+}
+
+/* Image cover with cinematic dark filter for portfolio cards */
+.poster-cover {
+  filter: grayscale(0.35) contrast(1.05) brightness(0.78);
+}
+
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }

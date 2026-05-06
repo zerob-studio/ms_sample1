@@ -1,3 +1,5 @@
+import SectionHeader from './SectionHeader';
+
 const SERVICES = [
   {
     no: '01',
@@ -43,33 +45,27 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="service" className="relative py-28 lg:py-40 border-t border-line">
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
-        <div className="mb-16 lg:mb-24 grid grid-cols-12 gap-6 font-mono text-[10px] tracking-[0.18em] uppercase">
-          <div className="col-span-6 lg:col-span-2 text-ink">— 03 / Service</div>
-          <div className="hidden lg:block col-span-7 text-mute">
-            Three pillars, one pipeline
-          </div>
-          <div className="col-span-6 lg:col-span-3 lg:text-right text-mute">
-            Brief → Ship
-          </div>
-        </div>
+    <section id="service" className="relative">
+      <SectionHeader
+        no="03"
+        label="Service"
+        caption="Three pillars, one pipeline"
+        meta="Brief → Ship"
+        headline={
+          <>
+            Sound, Localization,{' '}
+            <span className="italic">Echo.</span>
+          </>
+        }
+        description={
+          <>
+            세 영역의 전문성이 하나의 파이프라인으로 연결되어,
+            의뢰부터 출시까지 끊김 없이 동행합니다.
+          </>
+        }
+      />
 
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-24">
-          <div className="col-span-12 lg:col-span-7 lg:col-start-2">
-            <h2 className="font-display text-[clamp(2.2rem,5vw,4.6rem)] leading-[1.02] tracking-[-0.02em] text-ink">
-              Sound, Localization,{' '}
-              <span className="italic">Echo.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-3 lg:pt-3">
-            <p className="font-kr text-[14.5px] text-ink-soft leading-[1.95]">
-              세 영역의 전문성이 하나의 파이프라인으로 연결되어, 의뢰부터
-              출시까지 끊김 없이 동행합니다.
-            </p>
-          </div>
-        </div>
-
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="border-t border-line-2">
           {SERVICES.map((service) => (
             <article
