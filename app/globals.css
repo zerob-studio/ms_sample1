@@ -140,9 +140,11 @@ section {
   background: rgba(237, 233, 222, 0.015);
 }
 
-/* Image cover with cinematic dark filter for portfolio cards */
+/* Image cover with subtle cinematic tint — kept light enough that the
+   key art remains recognizable, while still feeling unified with the dark
+   editorial palette. */
 .poster-cover {
-  filter: grayscale(0.35) contrast(1.05) brightness(0.78);
+  filter: grayscale(0.12) contrast(1.04) brightness(0.92) saturate(0.9);
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import SectionHeader from './SectionHeader';
 
 const WORKS = [
@@ -9,7 +12,7 @@ const WORKS = [
     runtime: '01:42:18',
     channels: '5.1.4',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg',
     fallback: ['#1c1410', '#3a2418'],
     featured: true,
   },
@@ -21,7 +24,7 @@ const WORKS = [
     runtime: '00:58:02',
     channels: 'Atmos',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg',
     fallback: ['#0d141c', '#1b2536'],
   },
   {
@@ -32,7 +35,7 @@ const WORKS = [
     runtime: '01:22:40',
     channels: '7.1',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg',
     fallback: ['#1a1009', '#2e1c0e'],
   },
   {
@@ -43,7 +46,7 @@ const WORKS = [
     runtime: '01:14:55',
     channels: '5.1',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
     fallback: ['#0c1410', '#19241c'],
   },
   {
@@ -64,7 +67,7 @@ const WORKS = [
     runtime: '00:46:11',
     channels: 'Atmos',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg',
     fallback: ['#15110e', '#28201a'],
   },
   {
@@ -85,41 +88,40 @@ const WORKS = [
     runtime: '—',
     channels: 'Atmos',
     cover:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/397540/library_hero.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/397540/header.jpg',
     fallback: ['#1a1208', '#2e2010'],
   },
 ];
 
 function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
   const [c1, c2] = work.fallback;
+  const [imgFailed, setImgFailed] = useState(false);
+  const showImage = work.cover && !imgFailed;
+
   return (
-    <article
-      className="group relative overflow-hidden cursor-pointer aspect-[4/5] sm:aspect-[4/3] bg-bg"
-    >
-      {/* Real cover image with cinematic filter.
-          object-position: 50% 35% biases toward the upper-middle where game
-          key art typically places character/logo focal points. */}
-      {work.cover ? (
+    <article className="group relative overflow-hidden cursor-pointer aspect-[4/3] bg-bg">
+      {/* Gradient is always rendered underneath so failed images fall back gracefully */}
+      <div
+        className="absolute inset-0 transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+        style={{
+          background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${c2} 0%, ${c1} 60%, #08080a 100%)`,
+        }}
+      />
+
+      {showImage && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={work.cover}
+          src={work.cover!}
           alt={work.title}
           loading="lazy"
-          className="poster-cover absolute inset-0 w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
-          style={{ objectPosition: '50% 35%' }}
-        />
-      ) : (
-        <div
-          className="absolute inset-0 transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
-          style={{
-            background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${c2} 0%, ${c1} 60%, #08080a 100%)`,
-          }}
+          onError={() => setImgFailed(true)}
+          className="poster-cover absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
         />
       )}
 
-      {/* Vignette / readability overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/30" />
-      <div className="absolute inset-0 bg-bg/15" />
+      {/* Lighter readability overlay — lets the cover art breathe while
+          keeping the bottom title legible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
       {/* Top metadata strip */}
       <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
