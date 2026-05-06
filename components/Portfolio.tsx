@@ -99,65 +99,66 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
   const showImage = work.cover && !imgFailed;
 
   return (
-    <article className="group relative overflow-hidden cursor-pointer aspect-[4/3] bg-bg">
-      {/* Gradient is always rendered underneath so failed images fall back gracefully */}
-      <div
-        className="absolute inset-0 transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
-        style={{
-          background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${c2} 0%, ${c1} 60%, #08080a 100%)`,
-        }}
-      />
-
-      {showImage && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={work.cover!}
-          alt={work.title}
-          loading="lazy"
-          onError={() => setImgFailed(true)}
-          className="poster-cover absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+    <article className="group flex flex-col cursor-pointer bg-bg">
+      {/* Image area — fully visible, no heavy overlays */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        {/* Gradient is always rendered underneath so failed images fall back gracefully */}
+        <div
+          className="absolute inset-0 transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+          style={{
+            background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${c2} 0%, ${c1} 60%, #08080a 100%)`,
+          }}
         />
-      )}
 
-      {/* Subtle vignette for atmosphere — text legibility is handled by the
-          frosted info panel below, not by a full-card overlay. */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15" />
+        {showImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={work.cover!}
+            alt={work.title}
+            loading="lazy"
+            onError={() => setImgFailed(true)}
+            className="poster-cover absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+          />
+        )}
 
-      {/* Top metadata strip */}
-      <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
-        <span className="text-ink shrink-0 bg-black/40 backdrop-blur-sm px-2 py-0.5">
-          № {String(idx + 1).padStart(2, '0')}
-        </span>
-        <span className="text-ink flex items-center gap-2 shrink-0">
-          {work.featured && (
-            <span className="border border-ink/40 bg-black/50 backdrop-blur-sm px-2 py-0.5 text-[8px] sm:text-[9px] tracking-[0.2em]">
-              Featured
-            </span>
-          )}
-          <span className="bg-black/40 backdrop-blur-sm px-2 py-0.5">{work.year}</span>
-        </span>
+        {/* Subtle top-edge vignette only — keeps the corner chips legible */}
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
+
+        {/* Top metadata chips — small, frosted, only over the top vignette zone */}
+        <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
+          <span className="text-ink shrink-0 bg-black/45 backdrop-blur-sm px-2 py-0.5">
+            № {String(idx + 1).padStart(2, '0')}
+          </span>
+          <span className="text-ink flex items-center gap-2 shrink-0">
+            {work.featured && (
+              <span className="border border-ink/40 bg-black/55 backdrop-blur-sm px-2 py-0.5 text-[8px] sm:text-[9px] tracking-[0.2em]">
+                Featured
+              </span>
+            )}
+            <span className="bg-black/45 backdrop-blur-sm px-2 py-0.5">{work.year}</span>
+          </span>
+        </div>
       </div>
 
-      {/* Bottom info panel — frosted translucent box guarantees text legibility
-          on any image content (the "박스 투명도 + blur" approach). */}
-      <div className="absolute inset-x-0 bottom-0 z-10 bg-black/65 backdrop-blur-md border-t border-white/10 px-3.5 sm:px-5 lg:px-7 py-3 sm:py-4 lg:py-5">
-        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mb-1.5 sm:mb-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+      {/* Text strip below image — solid background, full image untouched above */}
+      <div className="px-3.5 sm:px-5 lg:px-6 py-3.5 sm:py-4 lg:py-5 border-t border-line bg-bg group-hover:bg-elev/60 transition-colors duration-500">
+        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-mute mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
           <span className="truncate">{work.category}</span>
-          <span className="text-mute hidden sm:inline">·</span>
+          <span className="text-mute/60 hidden sm:inline">·</span>
           <span className="hidden sm:inline">{work.channels}</span>
           {work.runtime !== '—' && (
             <>
-              <span className="text-mute hidden md:inline">·</span>
+              <span className="text-mute/60 hidden md:inline">·</span>
               <span className="hidden md:inline">{work.runtime}</span>
             </>
           )}
         </div>
-        <h3 className="font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1 sm:mb-1.5 text-base sm:text-xl lg:text-2xl">
+        <h3 className="font-display text-ink leading-[1.1] tracking-[-0.01em] text-base sm:text-xl lg:text-2xl">
           {work.title}
         </h3>
-        <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mt-1 sm:mt-1.5 flex items-center justify-between gap-2">
+        <p className="mt-2 sm:mt-2.5 font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft flex items-center justify-between gap-2">
           <span className="truncate">{work.publisher}</span>
-          <span className="shrink-0 text-ink/80 group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
+          <span className="shrink-0 text-mute group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
             →
           </span>
         </p>
