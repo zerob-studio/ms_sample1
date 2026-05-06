@@ -18,7 +18,7 @@ export default function About() {
         }
       />
 
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="grid grid-cols-12 gap-8 lg:gap-12 mt-4">
           <div className="col-span-12 lg:col-span-2 lg:col-start-2">
             <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute">

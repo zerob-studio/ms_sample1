@@ -9,20 +9,20 @@ export default function Stats() {
   return (
     <section id="numbers" className="relative bg-elev/40">
       <div className="chapter-strip">
-        <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
+        <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
           <span className="text-ink flex items-center gap-2.5">
             <span className="text-mute">— Ch.02</span>
-            <span>/</span>
-            <span>Index</span>
+            <span className="text-mute/60">/</span>
+            <span>Numbers</span>
           </span>
           <span className="hidden md:inline text-mute truncate">
             Three decades, in numbers
           </span>
-          <span className="text-mute">FY 1995 — 2025</span>
+          <span className="text-mute hidden sm:inline">FY 1995 — 2025</span>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-16 lg:py-24">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 py-16 lg:py-24">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
           {STATS.map((stat, idx) => (
             <div

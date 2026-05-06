@@ -13,7 +13,7 @@ export default function Hero() {
 
       {/* Top metadata strip — visible on mobile too, but fewer items */}
       <div className="absolute top-16 left-0 right-0 border-b border-line-2 bg-bg/60 backdrop-blur-sm">
-        <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-10 flex items-center justify-between font-mono text-[10px] tracking-[0.16em] uppercase text-mute gap-4">
+        <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 h-10 flex items-center justify-between font-mono text-[10px] tracking-[0.16em] uppercase text-mute gap-4">
           <span className="text-ink flex items-center gap-2 shrink-0">
             <span className="rec-dot" />
             REC · Studio A
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-[1480px] px-6 lg:px-12 pt-24 lg:pt-36 pb-20 lg:pb-32">
+      <div className="relative mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pt-24 lg:pt-36 pb-20 lg:pb-32">
         {/* Eyebrow row */}
         <div
           className="grid grid-cols-12 gap-6 mb-10 lg:mb-16 animate-fade-in items-end"

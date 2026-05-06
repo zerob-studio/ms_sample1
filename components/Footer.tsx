@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="relative border-t border-line-2 pt-16 lg:pt-20 pb-10">
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12">
         {/* Big quiet wordmark */}
         <div className="mb-14 lg:mb-16 grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-9">

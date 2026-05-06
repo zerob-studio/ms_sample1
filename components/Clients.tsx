@@ -75,7 +75,7 @@ export default function Clients() {
       </div>
 
       {/* Testimonials */}
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line">
           {QUOTES.map((quote, idx) => (
             <figure

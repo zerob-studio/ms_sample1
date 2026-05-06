@@ -96,7 +96,9 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
     <article
       className="group relative overflow-hidden cursor-pointer aspect-[4/5] sm:aspect-[4/3] bg-bg"
     >
-      {/* Real cover image with cinematic filter */}
+      {/* Real cover image with cinematic filter.
+          object-position: 50% 35% biases toward the upper-middle where game
+          key art typically places character/logo focal points. */}
       {work.cover ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -104,6 +106,7 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
           alt={work.title}
           loading="lazy"
           className="poster-cover absolute inset-0 w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+          style={{ objectPosition: '50% 35%' }}
         />
       ) : (
         <div
@@ -193,7 +196,8 @@ export default function Portfolio() {
         }
       />
 
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
+      {/* Full-bleed grid — no horizontal padding so cards reach viewport edges */}
+      <div className="pb-24 lg:pb-36">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-line/40 border-y border-line">
           {WORKS.map((work, idx) => (
             <ArtCard key={work.title} work={work} idx={idx} />

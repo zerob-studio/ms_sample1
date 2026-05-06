@@ -31,7 +31,7 @@ export default function Header() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-16 flex items-center justify-between">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <span className="font-display text-[22px] tracking-[-0.01em] text-ink">
             Musai

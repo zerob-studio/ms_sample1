@@ -3,14 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 
 const CHAPTERS = [
-  { id: 'top', no: '00', label: 'Studio', short: 'Musai' },
-  { id: 'about', no: '01', label: 'Studio', short: 'About' },
-  { id: 'numbers', no: '02', label: 'Index', short: 'Numbers' },
-  { id: 'service', no: '03', label: 'Service', short: 'Service' },
-  { id: 'works', no: '04', label: 'Works', short: 'Works' },
-  { id: 'clients', no: '05', label: 'Trust', short: 'Clients' },
-  { id: 'studios', no: '06', label: 'Locations', short: 'Studios' },
-  { id: 'contact', no: '07', label: 'Begin', short: 'Contact' },
+  { id: 'top', no: '00', short: 'Musai' },
+  { id: 'about', no: '01', short: 'Studio' },
+  { id: 'numbers', no: '02', short: 'Numbers' },
+  { id: 'service', no: '03', short: 'Service' },
+  { id: 'works', no: '04', short: 'Works' },
+  { id: 'clients', no: '05', short: 'Clients' },
+  { id: 'studios', no: '06', short: 'Studios' },
+  { id: 'contact', no: '07', short: 'Contact' },
 ];
 
 export default function SectionScroller() {
@@ -83,20 +83,20 @@ export default function SectionScroller() {
         />
       </div>
 
-      {/* Mobile floating chapter pill — visible only after scrolling past hero */}
+      {/* Mobile floating chapter badge — minimal, just the number to avoid
+          duplicating each section's own chapter strip label */}
       <div
         aria-hidden
-        className={`md:hidden fixed top-[72px] left-1/2 -translate-x-1/2 z-40 pointer-events-none transition-opacity duration-500 ${
+        className={`md:hidden fixed top-[72px] right-4 z-40 pointer-events-none transition-opacity duration-500 ${
           scrolled ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-elev/90 backdrop-blur-md border border-line-2 rounded-full shadow-lg">
+        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-elev/90 backdrop-blur-md border border-line-2 rounded-full">
           <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-mute">
-            Ch.{active.no}
+            Ch.
           </span>
-          <span className="h-3 w-px bg-line-2" />
           <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink">
-            {active.label}
+            {active.no}
           </span>
         </div>
       </div>

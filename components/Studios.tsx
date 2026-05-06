@@ -44,7 +44,7 @@ export default function Studios() {
         }
       />
 
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="border-t border-line-2">
           {STUDIOS.map((studio, idx) => (
             <article

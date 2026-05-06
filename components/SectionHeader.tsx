@@ -59,7 +59,7 @@ export default function SectionHeader({
           }`}
         />
 
-        <div className="relative mx-auto max-w-[1480px] px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
+        <div className="relative mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
           <span className="text-ink flex items-center gap-2.5">
             <span
               className={`h-1.5 w-1.5 rounded-full bg-live transition-opacity duration-700 ${
@@ -79,7 +79,7 @@ export default function SectionHeader({
       </div>
 
       {/* Section title block */}
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pt-14 lg:pt-24 pb-12 lg:pb-16">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pt-14 lg:pt-24 pb-12 lg:pb-16">
         <div className="grid grid-cols-12 gap-6 lg:gap-12">
           <div
             className={`col-span-12 lg:col-span-9 lg:col-start-2 transition-all duration-[1.2s] ease-out ${
