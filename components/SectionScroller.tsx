@@ -16,7 +16,6 @@ const CHAPTERS = [
 export default function SectionScroller() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
   const ratiosRef = useRef<Map<string, number>>(new Map());
 
   // Track scroll progress
@@ -26,7 +25,6 @@ export default function SectionScroller() {
       const total = doc.scrollHeight - window.innerHeight;
       const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
       setProgress(Math.min(Math.max(pct, 0), 100));
-      setScrolled(window.scrollY > window.innerHeight * 0.3);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -68,8 +66,6 @@ export default function SectionScroller() {
     return () => observer.disconnect();
   }, []);
 
-  const active = CHAPTERS[activeIdx];
-
   return (
     <>
       {/* Top thin progress bar — fixed under header */}
@@ -81,24 +77,6 @@ export default function SectionScroller() {
           className="h-full bg-ink/80 transition-[width] duration-200 ease-out"
           style={{ width: `${progress}%` }}
         />
-      </div>
-
-      {/* Mobile floating chapter badge — minimal, just the number to avoid
-          duplicating each section's own chapter strip label */}
-      <div
-        aria-hidden
-        className={`md:hidden fixed top-[72px] right-4 z-40 pointer-events-none transition-opacity duration-500 ${
-          scrolled ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-elev/90 backdrop-blur-md border border-line-2 rounded-full">
-          <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-mute">
-            Ch.
-          </span>
-          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink">
-            {active.no}
-          </span>
-        </div>
       </div>
 
       {/* Desktop right-side vertical rail */}

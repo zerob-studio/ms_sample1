@@ -119,9 +119,10 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
         />
       )}
 
-      {/* Lighter readability overlay — lets the cover art breathe while
-          keeping the bottom title legible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+      {/* Readability overlay — lets the cover art breathe up top, but enforces
+          a strong dark band over the lower 45% so title/meta stay legible
+          regardless of image content. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 from-0% via-black/70 via-25% to-transparent to-55%" />
 
       {/* Top metadata strip */}
       <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
