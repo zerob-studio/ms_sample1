@@ -119,29 +119,29 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
         />
       )}
 
-      {/* Readability overlay — lets the cover art breathe up top, but enforces
-          a strong dark band over the lower 45% so title/meta stay legible
-          regardless of image content. */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 from-0% via-black/70 via-25% to-transparent to-55%" />
+      {/* Subtle vignette for atmosphere — text legibility is handled by the
+          frosted info panel below, not by a full-card overlay. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15" />
 
       {/* Top metadata strip */}
       <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
-        <span className="text-ink-soft shrink-0">
+        <span className="text-ink shrink-0 bg-black/40 backdrop-blur-sm px-2 py-0.5">
           № {String(idx + 1).padStart(2, '0')}
         </span>
-        <span className="text-ink-soft flex items-center gap-2 shrink-0">
+        <span className="text-ink flex items-center gap-2 shrink-0">
           {work.featured && (
-            <span className="border border-ink/40 bg-bg/40 backdrop-blur-sm px-2 py-0.5 text-[8px] sm:text-[9px] tracking-[0.2em] text-ink">
+            <span className="border border-ink/40 bg-black/50 backdrop-blur-sm px-2 py-0.5 text-[8px] sm:text-[9px] tracking-[0.2em]">
               Featured
             </span>
           )}
-          <span>{work.year}</span>
+          <span className="bg-black/40 backdrop-blur-sm px-2 py-0.5">{work.year}</span>
         </span>
       </div>
 
-      {/* Bottom content */}
-      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 lg:p-7 z-10">
-        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mb-2 sm:mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+      {/* Bottom info panel — frosted translucent box guarantees text legibility
+          on any image content (the "박스 투명도 + blur" approach). */}
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-black/65 backdrop-blur-md border-t border-white/10 px-3.5 sm:px-5 lg:px-7 py-3 sm:py-4 lg:py-5">
+        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mb-1.5 sm:mb-2 flex flex-wrap items-center gap-x-2 gap-y-1">
           <span className="truncate">{work.category}</span>
           <span className="text-mute hidden sm:inline">·</span>
           <span className="hidden sm:inline">{work.channels}</span>
@@ -152,15 +152,12 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
             </>
           )}
         </div>
-        <h3
-          className="font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1.5 sm:mb-2 text-base sm:text-xl lg:text-2xl"
-          style={{ textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}
-        >
+        <h3 className="font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1 sm:mb-1.5 text-base sm:text-xl lg:text-2xl">
           {work.title}
         </h3>
-        <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mt-1.5 sm:mt-2 flex items-center justify-between gap-2">
+        <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mt-1 sm:mt-1.5 flex items-center justify-between gap-2">
           <span className="truncate">{work.publisher}</span>
-          <span className="shrink-0 text-ink/70 group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
+          <span className="shrink-0 text-ink/80 group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
             →
           </span>
         </p>
