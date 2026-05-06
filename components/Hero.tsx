@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pt-24 lg:pt-36 pb-20 lg:pb-32">
         {/* Eyebrow row */}
         <div
-          className="grid grid-cols-12 gap-6 mb-10 lg:mb-16 animate-fade-in items-end"
+          className="grid grid-cols-12 gap-y-6 lg:gap-x-6 mb-10 lg:mb-16 animate-fade-in items-end"
           style={{ animationDelay: '0.05s' }}
         >
           <div className="col-span-6 lg:col-span-2 font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
@@ -62,7 +62,7 @@ export default function Hero() {
         </h1>
 
         {/* Subline + CTA */}
-        <div className="mt-12 lg:mt-20 grid grid-cols-12 gap-6 lg:gap-8">
+        <div className="mt-12 lg:mt-20 grid grid-cols-12 gap-y-6 lg:gap-8">
           <div
             className="col-span-12 lg:col-span-5 lg:col-start-2 animate-fade-up"
             style={{ animationDelay: '0.55s' }}

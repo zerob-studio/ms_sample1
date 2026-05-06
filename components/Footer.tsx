@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="relative border-t border-line-2 pt-16 lg:pt-20 pb-10">
       <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12">
         {/* Big quiet wordmark */}
-        <div className="mb-14 lg:mb-16 grid grid-cols-12 gap-6 items-end">
+        <div className="mb-14 lg:mb-16 grid grid-cols-12 gap-y-6 lg:gap-x-6 items-end">
           <div className="col-span-12 lg:col-span-9">
             <div className="font-display text-[clamp(3.5rem,16vw,15rem)] leading-[0.84] tracking-[-0.04em] text-ink">
               Musai<span className="italic text-ink-soft">.</span>

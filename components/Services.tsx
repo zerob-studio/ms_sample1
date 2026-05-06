@@ -70,7 +70,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <article
               key={service.no}
-              className="group grid grid-cols-12 gap-6 lg:gap-8 py-10 lg:py-14 border-b border-line hover:bg-elev/40 transition-colors duration-700"
+              className="group grid grid-cols-12 gap-y-6 lg:gap-8 py-10 lg:py-14 border-b border-line hover:bg-elev/40 transition-colors duration-700"
             >
               <div className="col-span-12 lg:col-span-1 font-mono text-[11px] tracking-[0.18em] uppercase text-mute">
                 {service.no} / 03

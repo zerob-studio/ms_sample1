@@ -49,7 +49,7 @@ export default function Studios() {
           {STUDIOS.map((studio, idx) => (
             <article
               key={studio.city}
-              className="group grid grid-cols-12 gap-6 lg:gap-8 py-10 lg:py-16 border-b border-line"
+              className="group grid grid-cols-12 gap-y-6 lg:gap-8 py-10 lg:py-16 border-b border-line"
             >
               <div className="col-span-12 lg:col-span-1 font-mono text-[11px] tracking-[0.18em] uppercase text-mute">
                 {String(idx + 1).padStart(2, '0')}

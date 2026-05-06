@@ -22,7 +22,7 @@ export default function Contact() {
       />
 
       <div className="relative mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
-        <div className="grid grid-cols-12 gap-10 lg:gap-12">
+        <div className="grid grid-cols-12 gap-y-10 lg:gap-12">
           {/* Left: contact details */}
           <div className="col-span-12 lg:col-span-5 min-w-0">
             <p className="font-kr text-[15px] text-ink-soft leading-[1.95] max-w-md">

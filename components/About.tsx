@@ -19,7 +19,7 @@ export default function About() {
       />
 
       <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 mt-4">
+        <div className="grid grid-cols-12 gap-y-8 lg:gap-12 mt-4">
           <div className="col-span-12 lg:col-span-2 lg:col-start-2">
             <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
               — Note
@@ -74,7 +74,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-24 lg:mt-32 grid grid-cols-12 gap-8">
+        <div className="mt-24 lg:mt-32 grid grid-cols-12 gap-y-8 lg:gap-x-8">
           <div className="col-span-12 lg:col-span-9 lg:col-start-3">
             <div className="border-l border-line-2 pl-6 lg:pl-12">
               <p className="font-display text-[clamp(1.5rem,3vw,2.6rem)] text-ink leading-[1.42] tracking-[-0.01em]">
