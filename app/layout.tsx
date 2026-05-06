@@ -1,25 +1,47 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Noto_Serif_KR } from 'next/font/google';
+import { Instrument_Serif, Inter, JetBrains_Mono, Noto_Serif_KR, Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 
-const playfair = Playfair_Display({
+const instrument = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-playfair',
+  variable: '--font-instrument',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-mono',
 });
 
 const notoSerifKr = Noto_Serif_KR({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '900'],
+  weight: ['400', '500', '700'],
   display: 'swap',
   variable: '--font-noto-serif-kr',
+});
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  display: 'swap',
+  variable: '--font-noto-sans-kr',
 });
 
 export const metadata: Metadata = {
   title: 'MUSAI STUDIO — Sound. Localization. Entertainment.',
   description:
-    '게임과 영상, 그리고 모든 이야기를 위한 사운드. 30년의 장인정신, MUSAI 스튜디오.',
+    'Cinema-grade sound, localization, and entertainment for global storytellers. Seoul · Berlin, since 1995.',
 };
 
 export default function RootLayout({
@@ -28,8 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${playfair.variable} ${notoSerifKr.variable}`}>
-      <body className="bg-bg text-ink">{children}</body>
+    <html
+      lang="ko"
+      className={`${instrument.variable} ${inter.variable} ${mono.variable} ${notoSerifKr.variable} ${notoSansKr.variable}`}
+    >
+      <body className="bg-bg text-ink antialiased">{children}</body>
     </html>
   );
 }

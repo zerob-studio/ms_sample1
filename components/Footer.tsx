@@ -1,83 +1,83 @@
 export default function Footer() {
   return (
-    <footer className="relative border-t border-gold/15 py-20">
-      <div className="mx-auto max-w-[1440px] px-8 lg:px-14">
-        {/* Big mark */}
+    <footer className="relative border-t border-line-2 pt-20 pb-10">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
+        {/* Big quiet wordmark */}
         <div className="mb-16 grid grid-cols-12 gap-6 items-end">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="font-display text-[clamp(4rem,12vw,11rem)] leading-[0.85] tracking-[-0.04em]">
-              <span className="gold-text">MUSAI</span>
+          <div className="col-span-12 lg:col-span-9">
+            <div className="font-display text-[clamp(4rem,16vw,15rem)] leading-[0.84] tracking-[-0.04em] text-ink">
+              Musai<span className="italic text-ink-soft">.</span>
             </div>
-            <p className="font-kr-display text-[14px] text-ink/45 mt-6 max-w-md leading-[1.95]">
-              Sound · Localization · Entertainment.
-              <br />
-              세계가 신뢰하는 한국의 사운드 — 1995년부터.
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mt-6">
+              Sound · Localization · Entertainment — Since 1995
             </p>
           </div>
-          <div className="col-span-12 lg:col-span-4 lg:text-right">
-            <p className="font-display italic text-2xl text-gold">
-              "Boost Your Play."
+          <div className="col-span-12 lg:col-span-3 lg:text-right">
+            <p className="font-display italic text-2xl text-ink">
+              Boost Your Play.
+            </p>
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mt-3">
+              The Musai axiom
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-14">
-          <div>
-            <div className="text-[10px] tracking-[0.45em] uppercase text-gold/70 mb-5">
-              Studio
-            </div>
-            <ul className="space-y-2.5 text-[13px] text-ink/60 font-kr-display">
-              <li>About</li>
-              <li>Service</li>
-              <li>Works</li>
-              <li>Blog</li>
-              <li>Careers</li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="text-[10px] tracking-[0.45em] uppercase text-gold/70 mb-5">
-              Service
-            </div>
-            <ul className="space-y-2.5 text-[13px] text-ink/60 font-kr-display">
-              <li>SOUND — 오디오 · 보이스</li>
-              <li>L10N — 로컬라이제이션</li>
-              <li>ECHO — 엔터테인먼트</li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="text-[10px] tracking-[0.45em] uppercase text-gold/70 mb-5">
-              Studios
-            </div>
-            <ul className="space-y-2.5 text-[13px] text-ink/60">
-              <li>Seoul, Korea</li>
-              <li>Berlin, Germany</li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="text-[10px] tracking-[0.45em] uppercase text-gold/70 mb-5">
-              Connect
-            </div>
-            <ul className="space-y-2.5 text-[13px] text-ink/60">
-              <li>contact@musaistudio.com</li>
-              <li>+82 2 529 1488</li>
-              <li>Instagram</li>
-              <li>LinkedIn</li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14 pt-10 border-t border-line">
+          <FooterCol
+            label="Studio"
+            items={['About', 'Service', 'Works', 'Blog', 'Careers']}
+          />
+          <FooterCol
+            label="Service"
+            items={['Sound — Audio · Voice', 'L10N — Localization', 'Echo — Talent · IP']}
+          />
+          <FooterCol
+            label="Locations"
+            items={['Seoul, KR · 37.5°N 127.0°E', 'Berlin, DE · 52.5°N 13.4°E']}
+          />
+          <FooterCol
+            label="Connect"
+            items={[
+              'contact@musaistudio.com',
+              '+82 2 529 1488',
+              'Instagram',
+              'LinkedIn',
+            ]}
+          />
         </div>
 
-        <div className="pt-8 border-t border-gold/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] tracking-[0.4em] uppercase text-ink/30">
-          <span>© 2026 MUSAI STUDIO · All Rights Reserved</span>
-          <div className="flex items-center gap-5">
+        <div className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-start md:items-center gap-4 font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
+          <span>© 2026 Musai Studio · All rights reserved</span>
+          <div className="flex items-center gap-6">
             <span>Privacy</span>
             <span>Terms</span>
-            <span className="text-gold/50">Crafted in Seoul</span>
+            <span className="flex items-center gap-2 text-ink-soft">
+              <span className="rec-dot" />
+              Recording in Seoul · Berlin
+            </span>
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({ label, items }: { label: string; items: string[] }) {
+  return (
+    <div>
+      <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink mb-5">
+        — {label}
+      </div>
+      <ul className="space-y-2.5 text-[13px] text-ink-soft">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="hover:text-ink transition-colors duration-300 cursor-pointer"
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

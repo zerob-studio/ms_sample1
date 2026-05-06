@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #0a0a0a;
-  --color-ink: #f5f1e8;
-  --color-gold: #c9a84c;
+  --color-bg: #0a0a0b;
+  --color-bg-elev: #101012;
+  --color-ink: #ede9de;
+  --color-ink-soft: #b6b1a4;
+  --color-mute: #6b6863;
+  --color-line: rgba(237, 233, 222, 0.08);
+  --color-line-strong: rgba(237, 233, 222, 0.18);
+  --color-live: #e04b36;
 }
 
 * {
@@ -17,89 +22,105 @@ html,
 body {
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-noto-serif-kr), var(--font-playfair), serif;
+  font-family: var(--font-inter), var(--font-noto-sans-kr), system-ui, sans-serif;
+  font-feature-settings: 'ss01', 'ss02', 'cv11';
 }
 
 ::selection {
-  background: var(--color-gold);
-  color: #0a0a0a;
+  background: var(--color-ink);
+  color: var(--color-bg);
 }
 
 .font-display {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-instrument), 'Times New Roman', serif;
+  font-feature-settings: 'liga', 'dlig';
 }
 
 .font-kr-display {
   font-family: var(--font-noto-serif-kr), serif;
 }
 
-.gold-line {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(201, 168, 76, 0.6) 20%,
-    rgba(201, 168, 76, 1) 50%,
-    rgba(201, 168, 76, 0.6) 80%,
-    transparent 100%
-  );
+.font-kr {
+  font-family: var(--font-noto-sans-kr), sans-serif;
 }
 
-.gold-text {
-  background: linear-gradient(
-    180deg,
-    #e0c378 0%,
-    #c9a84c 50%,
-    #8a7332 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.font-mono {
+  font-family: var(--font-mono), 'SF Mono', Menlo, monospace;
 }
 
-.shimmer-text {
-  background: linear-gradient(
-    90deg,
-    #c9a84c 0%,
-    #f5e7b3 25%,
-    #c9a84c 50%,
-    #f5e7b3 75%,
-    #c9a84c 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shimmer 3.5s linear infinite;
+/* Hairline divider used as section separators */
+.hairline {
+  height: 1px;
+  background: var(--color-line);
+}
+.hairline-strong {
+  height: 1px;
+  background: var(--color-line-strong);
 }
 
-.vignette::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 30%,
-    rgba(10, 10, 10, 0.65) 75%,
-    #0a0a0a 100%
-  );
-  pointer-events: none;
-}
-
-.grain {
-  position: relative;
-}
+/* Subtle film grain — way quieter than before */
 .grain::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.5 0 0 0 0 0.3 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
   pointer-events: none;
   mix-blend-mode: overlay;
   opacity: 0.5;
+  z-index: 1;
 }
 
-.hairline {
-  border: 1px solid rgba(201, 168, 76, 0.18);
+/* Spectrogram-ish hairline pattern — used as decorative line */
+.spectrogram-line {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(237, 233, 222, 0.05) 8%,
+    rgba(237, 233, 222, 0.18) 16%,
+    rgba(237, 233, 222, 0.05) 24%,
+    rgba(237, 233, 222, 0.22) 33%,
+    rgba(237, 233, 222, 0.06) 42%,
+    rgba(237, 233, 222, 0.28) 50%,
+    rgba(237, 233, 222, 0.08) 60%,
+    rgba(237, 233, 222, 0.20) 70%,
+    rgba(237, 233, 222, 0.05) 80%,
+    rgba(237, 233, 222, 0.16) 88%,
+    transparent 100%
+  );
+}
+
+/* Frequency-bar visualizer used in Hero — pure CSS animated */
+.eq-bar {
+  display: inline-block;
+  width: 2px;
+  background: var(--color-ink);
+  opacity: 0.55;
+  transform-origin: bottom;
+  animation: eq-pulse 1.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes eq-pulse {
+  0%, 100% { transform: scaleY(0.18); }
+  20% { transform: scaleY(0.92); }
+  40% { transform: scaleY(0.42); }
+  60% { transform: scaleY(0.78); }
+  80% { transform: scaleY(0.30); }
+}
+
+@keyframes blink {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0.25; }
+}
+
+.rec-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-live);
+  animation: blink 1.6s steps(1, end) infinite;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

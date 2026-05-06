@@ -6,65 +6,52 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" className="relative py-32 lg:py-44 overflow-hidden">
-      {/* Ambient gold glow */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-70"
-        style={{
-          background:
-            'radial-gradient(ellipse 50% 40% at 50% 100%, rgba(201,168,76,0.18) 0%, transparent 70%)',
-        }}
-      />
+    <section id="contact" className="relative py-28 lg:py-40 overflow-hidden border-t border-line">
+      <div className="relative mx-auto max-w-[1480px] px-6 lg:px-12">
+        <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 font-mono text-[10px] tracking-[0.18em] uppercase">
+          <div className="col-span-6 lg:col-span-2 text-ink">— 07 / Begin</div>
+          <div className="hidden lg:block col-span-7 text-mute">
+            Brief us. We&apos;ll reply within 24h.
+          </div>
+          <div className="col-span-6 lg:col-span-3 lg:text-right text-mute flex items-center justify-end gap-2">
+            <span className="rec-dot" />
+            Open for 2025/26
+          </div>
+        </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-8 lg:px-14">
-        <div className="grid grid-cols-12 gap-12">
+        <div className="grid grid-cols-12 gap-10 lg:gap-12">
           {/* Left: pitch */}
           <div className="col-span-12 lg:col-span-5">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-gold/80">
-              Chapter 07 — Begin
-            </span>
-            <h2 className="mt-5 font-display text-[clamp(3rem,5vw,5rem)] leading-[0.95] tracking-[-0.02em]">
-              Let's craft<br />
-              your next<br />
-              <span className="italic gold-text">masterpiece</span>.
+            <h2 className="font-display text-[clamp(2.6rem,5.4vw,5rem)] leading-[1.02] tracking-[-0.02em] text-ink">
+              Let&apos;s craft <br />
+              your next <br />
+              <span className="italic">masterpiece.</span>
             </h2>
-            <p className="mt-8 font-kr-display text-[16px] text-ink/55 leading-[1.95] max-w-md">
-              한 줄이라도 좋습니다.
+            <p className="mt-8 font-kr text-[15px] text-ink-soft leading-[1.95] max-w-md">
+              한 줄이라도 좋습니다. 당신의 이야기를 들려주세요.
               <br />
-              당신의 이야기를 들려주세요. 24시간 이내 회신드립니다.
+              24시간 이내 회신드립니다.
             </p>
 
-            <div className="mt-16 space-y-7">
-              <div>
-                <div className="text-[10px] tracking-[0.4em] uppercase text-gold/70 mb-2">
-                  General Inquiry
-                </div>
-                <a
-                  href="mailto:contact@musaistudio.com"
-                  className="font-display text-xl text-ink/90 hover:text-gold transition-colors tracking-wide"
+            <dl className="mt-14 border-t border-line-2">
+              {[
+                ['General', 'contact@musaistudio.com'],
+                ['Seoul HQ', '+82 2 529 1488'],
+                ['Berlin', 'Holsteinische Str. 1, 12163'],
+              ].map(([k, v]) => (
+                <div
+                  key={k}
+                  className="flex items-baseline justify-between border-b border-line py-4"
                 >
-                  contact@musaistudio.com
-                </a>
-              </div>
-              <div>
-                <div className="text-[10px] tracking-[0.4em] uppercase text-gold/70 mb-2">
-                  Seoul HQ
+                  <dt className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
+                    — {k}
+                  </dt>
+                  <dd className="font-mono text-[12px] tracking-[0.04em] text-ink">
+                    {v}
+                  </dd>
                 </div>
-                <div className="text-[14px] text-ink/75 leading-relaxed">
-                  166 Donggwang-ro, Seocho, Seoul 06589
-                  <br />
-                  <span className="font-display tracking-wide">+82 2 529 1488</span>
-                </div>
-              </div>
-              <div>
-                <div className="text-[10px] tracking-[0.4em] uppercase text-gold/70 mb-2">
-                  Berlin Office
-                </div>
-                <div className="text-[14px] text-ink/75 leading-relaxed">
-                  Holsteinische Str. 1, 12163 Berlin, Germany
-                </div>
-              </div>
-            </div>
+              ))}
+            </dl>
           </div>
 
           {/* Right: form */}
@@ -74,81 +61,77 @@ export default function Contact() {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="border border-gold/15 p-8 lg:p-12 bg-bg/60 backdrop-blur"
+              className="border border-line-2 p-8 lg:p-12 bg-elev/40"
             >
-              <div className="flex items-baseline justify-between mb-10">
-                <span className="text-[10px] tracking-[0.45em] uppercase text-gold/70">
-                  Project Brief
-                </span>
-                <span className="text-[10px] tracking-[0.4em] uppercase text-ink/35">
-                  Confidential
-                </span>
+              <div className="flex items-baseline justify-between mb-10 font-mono text-[10px] tracking-[0.18em] uppercase">
+                <span className="text-ink">Project Brief</span>
+                <span className="text-mute">Confidential · Encrypted</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <Field label="Your Name" required>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-2">
+                <Field label="Your name" required>
                   <input
                     type="text"
                     required
-                    className="w-full bg-transparent border-b border-gold/20 focus:border-gold pb-3 text-ink placeholder:text-ink/30 outline-none transition-colors font-kr-display"
+                    className="w-full bg-transparent border-b border-line-2 focus:border-ink pb-3 text-ink placeholder:text-mute outline-none transition-colors"
                     placeholder="Jane Doe / 홍길동"
                   />
                 </Field>
                 <Field label="Studio / Company">
                   <input
                     type="text"
-                    className="w-full bg-transparent border-b border-gold/20 focus:border-gold pb-3 text-ink placeholder:text-ink/30 outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-line-2 focus:border-ink pb-3 text-ink placeholder:text-mute outline-none transition-colors"
                     placeholder="e.g. CD Projekt Red"
                   />
                 </Field>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-2">
                 <Field label="Email" required>
                   <input
                     type="email"
                     required
-                    className="w-full bg-transparent border-b border-gold/20 focus:border-gold pb-3 text-ink placeholder:text-ink/30 outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-line-2 focus:border-ink pb-3 text-ink placeholder:text-mute outline-none transition-colors font-mono text-[14px]"
                     placeholder="you@example.com"
                   />
                 </Field>
                 <Field label="Service" required>
                   <select
                     required
-                    className="w-full bg-transparent border-b border-gold/20 focus:border-gold pb-3 text-ink outline-none transition-colors font-kr-display"
+                    className="w-full bg-transparent border-b border-line-2 focus:border-ink pb-3 text-ink outline-none transition-colors"
                     defaultValue=""
                   >
                     <option value="" disabled className="bg-bg">
                       Select a service
                     </option>
-                    <option className="bg-bg">SOUND — Audio &amp; Voice</option>
+                    <option className="bg-bg">Sound — Audio &amp; Voice</option>
                     <option className="bg-bg">L10N — Localization</option>
-                    <option className="bg-bg">ECHO — Talent &amp; IP</option>
+                    <option className="bg-bg">Echo — Talent &amp; IP</option>
                     <option className="bg-bg">Multiple / Other</option>
                   </select>
                 </Field>
               </div>
 
-              <Field label="Project Brief" required>
+              <Field label="Project brief" required>
                 <textarea
                   required
                   rows={6}
-                  className="w-full bg-transparent border-b border-gold/20 focus:border-gold pb-3 text-ink placeholder:text-ink/30 outline-none transition-colors resize-none font-kr-display"
+                  className="w-full bg-transparent border-b border-line-2 focus:border-ink pb-3 text-ink placeholder:text-mute outline-none transition-colors resize-none"
                   placeholder="장르, 일정, 규모, 톤앤매너 — 어떤 결의 작품인가요?"
                 />
               </Field>
 
               <div className="mt-12 flex flex-wrap items-center justify-between gap-6">
-                <p className="text-[11px] tracking-wider text-ink/40 font-kr-display">
-                  제출 시 24시간 이내 회신을 약속드립니다.
+                <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-mute">
+                  Reply within 24h · KR · EN · JP · DE
                 </p>
                 <button
                   type="submit"
                   disabled={submitted}
-                  className="group inline-flex items-center gap-3 text-[11px] tracking-[0.32em] uppercase text-bg bg-gold px-9 py-4 hover:bg-gold-light transition-colors duration-500 disabled:bg-gold/30 disabled:cursor-not-allowed"
+                  className="group inline-flex items-center gap-3 font-mono text-[10px] tracking-[0.22em] uppercase text-bg bg-ink px-8 py-3.5 hover:bg-ink-soft transition-colors duration-500 disabled:bg-ink/30 disabled:cursor-not-allowed"
                 >
-                  {submitted ? 'Sent · Thank You' : 'Send Inquiry'}
-                  <span className="inline-block transition-transform duration-500 group-hover:translate-x-1.5">
+                  {submitted ? 'Sent · Thank you' : 'Send Inquiry'}
+                  <span className="font-display italic transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
                 </button>
@@ -171,10 +154,10 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="block mb-6 last:mb-0">
-      <span className="block text-[10px] tracking-[0.4em] uppercase text-gold/70 mb-3">
-        {label}
-        {required && <span className="text-gold ml-1">*</span>}
+    <label className="block mb-8 last:mb-0">
+      <span className="block font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-3">
+        — {label}
+        {required && <span className="text-ink ml-1">*</span>}
       </span>
       {children}
     </label>

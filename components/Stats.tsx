@@ -1,64 +1,50 @@
 const STATS = [
-  { value: '30', suffix: '+', unit: 'Years', kr: '장인의 시간' },
-  { value: '20', suffix: '+', unit: 'Studios', kr: '글로벌 거점' },
-  { value: '200', suffix: '+', unit: 'Clients', kr: '신뢰의 파트너' },
-  { value: '2,000', suffix: '+', unit: 'Projects', kr: '완성된 이야기' },
+  { value: '30', suffix: '+', unit: 'Years', sub: 'Since 1995' },
+  { value: '20', suffix: '+', unit: 'Studios', sub: 'Recording rooms' },
+  { value: '200', suffix: '+', unit: 'Clients', sub: 'AAA & global' },
+  { value: '2,000', suffix: '+', unit: 'Titles', sub: 'Shipped to date' },
 ];
 
 export default function Stats() {
   return (
-    <section className="relative py-28 lg:py-32 border-y border-gold/15">
-      <div className="mx-auto max-w-[1440px] px-8 lg:px-14">
-        <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <span className="text-[10px] tracking-[0.45em] uppercase text-gold/80">
-              Chapter 02 — In Numbers
-            </span>
-            <h2 className="mt-4 font-display text-3xl md:text-4xl text-ink/90 leading-tight tracking-[-0.01em]">
-              Three decades of <span className="italic gold-text">listening</span>.
-            </h2>
+    <section className="relative border-t border-line">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-20 lg:py-24">
+        <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 font-mono text-[10px] tracking-[0.18em] uppercase">
+          <div className="col-span-6 lg:col-span-2 text-ink">— 02 / Index</div>
+          <div className="hidden lg:block col-span-7 text-mute">
+            Three decades, in numbers
           </div>
-          <p className="font-kr-display text-sm text-ink/45 max-w-sm">
-            숫자는 결과가 아니라 결을 말합니다.
-            <br />
-            우리가 쌓은 시간은 작품의 결로 돌아갑니다.
-          </p>
+          <div className="col-span-6 lg:col-span-3 lg:text-right text-mute">
+            FY 1995 — 2025
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
+        <div className="hairline mb-0" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-line border-b border-line">
           {STATS.map((stat, idx) => (
-            <div
-              key={stat.unit}
-              className="bg-bg p-8 lg:p-10 group hover:bg-gold/[0.04] transition-colors duration-700 relative"
-            >
-              {/* corner accent */}
-              <span className="absolute top-4 right-4 h-1 w-1 bg-gold/40 group-hover:bg-gold transition-colors" />
-
-              <div className="flex items-baseline justify-between mb-8">
-                <span className="text-[10px] tracking-[0.4em] uppercase text-ink/40">
-                  0{idx + 1}
-                </span>
-                <span className="h-px w-10 bg-gold/30 group-hover:w-20 group-hover:bg-gold transition-all duration-700" />
+            <div key={stat.unit} className="px-2 lg:px-8 py-10 lg:py-14 first:pl-0 last:pr-0 group">
+              <div className="flex items-baseline justify-between font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-8">
+                <span>0{idx + 1} · {stat.unit}</span>
               </div>
 
-              <div className="font-display leading-none mb-7">
-                <span className="gold-text text-6xl md:text-7xl lg:text-[5.5rem] tracking-[-0.04em]">
+              <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink">
+                <span className="text-[clamp(3rem,6.5vw,5.6rem)]">
                   {stat.value}
                 </span>
-                <span className="text-gold/60 text-3xl md:text-4xl ml-1">
+                <span className="text-[clamp(1.6rem,3vw,2.6rem)] text-ink-soft/80 align-top ml-1">
                   {stat.suffix}
                 </span>
               </div>
 
-              <div className="text-[11px] tracking-[0.35em] uppercase text-ink/70 mb-2">
-                {stat.unit}
-              </div>
-              <div className="font-kr-display text-[13px] text-ink/40">
-                {stat.kr}
+              <div className="mt-6 flex items-center gap-3 font-mono text-[10px] tracking-[0.14em] uppercase text-ink-soft">
+                <span className="h-px w-6 bg-line-2 group-hover:w-12 group-hover:bg-ink/60 transition-all duration-700" />
+                {stat.sub}
               </div>
             </div>
           ))}
         </div>
+
+        <div className="spectrogram-line mt-0" />
       </div>
     </section>
   );

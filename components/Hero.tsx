@@ -1,135 +1,166 @@
+const EQ_BARS = Array.from({ length: 64 }, (_, i) => i);
+
 export default function Hero() {
   return (
-    <section className="relative h-screen min-h-[820px] w-full overflow-hidden vignette grain">
-      {/* Atmospheric lighting */}
+    <section className="relative min-h-[100svh] w-full overflow-hidden grain pt-16">
+      {/* very subtle ambience, no glow */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 65% 50% at 50% 30%, rgba(201,168,76,0.20) 0%, rgba(201,168,76,0.05) 35%, transparent 70%), radial-gradient(ellipse 50% 40% at 15% 90%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a0a0a 0%, #0e0a05 55%, #060606 100%)',
+            'linear-gradient(180deg, #0a0a0b 0%, #0c0c0d 60%, #0a0a0b 100%)',
         }}
       />
 
-      {/* Editorial grid */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #c9a84c 1px, transparent 1px), linear-gradient(to bottom, #c9a84c 1px, transparent 1px)',
-          backgroundSize: '160px 160px',
-        }}
-      />
+      {/* Top metadata strip */}
+      <div className="absolute top-16 left-0 right-0 border-b border-line">
+        <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-9 flex items-center justify-between font-mono text-[10px] tracking-[0.14em] uppercase text-mute">
+          <div className="flex items-center gap-6">
+            <span className="text-ink/85 flex items-center gap-2">
+              <span className="rec-dot" />
+              REC · Studio A
+            </span>
+            <span className="hidden md:inline">Seoul · 37.5°N 127.0°E</span>
+            <span className="hidden lg:inline">Berlin · 52.5°N 13.4°E</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="hidden md:inline">192 kHz · 24 bit</span>
+            <span className="hidden md:inline">Dolby Atmos / 5.1.4</span>
+            <span>ISO 17100</span>
+          </div>
+        </div>
+      </div>
 
-      {/* Top hairline */}
-      <div className="absolute top-32 left-0 right-0 h-px gold-line opacity-50" />
-
-      <div className="relative h-full mx-auto max-w-[1440px] px-8 lg:px-14 grid grid-cols-12 gap-6 items-center">
-        {/* Side index — editorial touch */}
-        <div className="hidden lg:block col-span-1 self-stretch relative">
-          <div className="absolute top-1/2 -translate-y-1/2 -left-2 -rotate-90 origin-left whitespace-nowrap text-[10px] tracking-[0.5em] uppercase text-ink/35 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            Issue 030 — 1995 / 2025
+      <div className="relative mx-auto max-w-[1480px] px-6 lg:px-12 pt-28 lg:pt-36 pb-24 lg:pb-36">
+        {/* Top eyebrow row */}
+        <div
+          className="grid grid-cols-12 gap-6 mb-12 lg:mb-20 animate-fade-in"
+          style={{ animationDelay: '0.05s' }}
+        >
+          <div className="col-span-12 lg:col-span-2 font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
+            <div>Issue 030</div>
+            <div className="text-ink/60">1995 — 2025</div>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-ink/70">
+              Sound · Localization · Entertainment
+            </div>
+          </div>
+          <div className="hidden lg:flex col-span-3 items-end justify-end">
+            <EqVisualizer />
           </div>
         </div>
 
-        {/* Main column */}
-        <div className="col-span-12 lg:col-span-9">
-          {/* Eyebrow */}
-          <div
-            className="flex items-center gap-4 mb-10 animate-fade-in"
-            style={{ animationDelay: '0.1s' }}
+        {/* Main editorial headline */}
+        <h1 className="font-display tracking-[-0.02em]">
+          <span
+            className="block text-[clamp(3.2rem,11.5vw,12.5rem)] leading-[0.94] text-ink animate-fade-up"
+            style={{ animationDelay: '0.15s' }}
           >
-            <span className="h-px w-14 bg-gold" />
-            <span className="text-[10px] tracking-[0.45em] uppercase text-gold/95">
-              Sound · Localization · Entertainment
-            </span>
+            Sound that
+          </span>
+          <span
+            className="block text-[clamp(3.2rem,11.5vw,12.5rem)] leading-[0.94] italic text-ink animate-fade-up pl-[clamp(2rem,10vw,11rem)]"
+            style={{ animationDelay: '0.32s' }}
+          >
+            ships globally.
+          </span>
+        </h1>
+
+        {/* Subline + CTA row */}
+        <div className="mt-14 lg:mt-20 grid grid-cols-12 gap-8">
+          <div
+            className="col-span-12 lg:col-span-5 lg:col-start-2 animate-fade-up"
+            style={{ animationDelay: '0.55s' }}
+          >
+            <p className="font-kr-display text-[17px] md:text-[18px] text-ink-soft leading-[1.95]">
+              <span className="text-ink">CD Projekt Red, Larian, Riot, Rockstar.</span>
+              <br />
+              세계가 신뢰하는 한국의 사운드 — 1995년부터,
+              <br />
+              서울과 베를린의 두 스튜디오에서.
+            </p>
           </div>
 
-          {/* Tagline */}
-          <p
-            className="font-display text-[10px] md:text-[11px] tracking-[0.6em] uppercase text-ink/55 mb-8 animate-fade-up"
-            style={{ animationDelay: '0.18s' }}
-          >
-            — Boost Your Play
-          </p>
-
-          {/* Main headline */}
-          <h1 className="font-display leading-[0.9] tracking-[-0.02em]">
-            <span
-              className="block text-[clamp(3.5rem,11vw,11.5rem)] text-ink/95 animate-fade-up"
-              style={{ animationDelay: '0.25s' }}
-            >
-              Where craft
-            </span>
-            <span
-              className="block text-[clamp(3.5rem,11vw,11.5rem)] animate-fade-up shimmer-text italic font-medium pl-[clamp(2rem,8vw,9rem)]"
-              style={{ animationDelay: '0.4s' }}
-            >
-              meets play.
-            </span>
-          </h1>
-
-          {/* Korean subtitle */}
-          <p
-            className="mt-12 max-w-xl text-[17px] md:text-lg text-ink/60 leading-[1.85] font-kr-display animate-fade-up"
-            style={{ animationDelay: '0.6s' }}
-          >
-            세계 유수의 제작 파트너들과 함께,
-            <br />
-            <span className="text-ink/85">신뢰의 발자취를 새기다.</span>
-          </p>
-
-          {/* CTAs */}
           <div
-            className="mt-12 flex flex-wrap items-center gap-8 animate-fade-up"
-            style={{ animationDelay: '0.75s' }}
+            className="col-span-12 lg:col-span-5 flex items-end justify-start lg:justify-end gap-10 animate-fade-up"
+            style={{ animationDelay: '0.72s' }}
           >
             <a
               href="#works"
-              className="group inline-flex items-center gap-3 text-[12px] tracking-[0.32em] uppercase text-bg bg-gold px-9 py-4 hover:bg-gold-light transition-colors duration-500"
+              className="group inline-flex items-baseline gap-3 text-[15px] text-ink border-b border-ink/40 hover:border-ink pb-2 transition-colors"
             >
-              View Selected Works
-              <span className="inline-block transition-transform duration-500 group-hover:translate-x-1.5">
-                →
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mute group-hover:text-ink/70 transition-colors">
+                01
               </span>
+              <span>View selected works</span>
+              <span className="font-display italic transition-transform duration-500 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#service"
-              className="text-[12px] tracking-[0.3em] uppercase text-ink/85 hover:text-gold transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
+              className="group inline-flex items-baseline gap-3 text-[15px] text-ink-soft hover:text-ink transition-colors"
             >
-              The Studio
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mute group-hover:text-ink/70 transition-colors">
+                02
+              </span>
+              <span>The Studio</span>
             </a>
           </div>
         </div>
 
-        {/* Bottom meta */}
-        <div className="absolute bottom-12 left-8 lg:left-14 right-8 lg:right-14 grid grid-cols-2 md:grid-cols-4 gap-6 text-[10px] tracking-[0.35em] uppercase text-ink/50">
-          <div className="animate-fade-in" style={{ animationDelay: '1s' }}>
-            <div className="text-gold/70 mb-1.5">— Origin</div>
-            <div className="text-ink/80 font-display tracking-[0.2em]">Seoul · Berlin</div>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: '1.05s' }}>
-            <div className="text-gold/70 mb-1.5">— Founded</div>
-            <div className="text-ink/80 font-display tracking-[0.2em]">1995</div>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: '1.1s' }}>
-            <div className="text-gold/70 mb-1.5">— Languages</div>
-            <div className="text-ink/80 font-display tracking-[0.2em]">30+</div>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: '1.15s' }}>
-            <div className="text-gold/70 mb-1.5">— Status</div>
-            <div className="text-ink/80 font-display tracking-[0.2em] flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
-              Now Recording
+        {/* Bottom technical strip */}
+        <div className="mt-24 lg:mt-32 pt-8 border-t border-line grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+          {[
+            { k: 'Years', v: '30+', sub: 'Since 1995' },
+            { k: 'Languages', v: '30+', sub: 'KR · EN · JP · CN · DE …' },
+            { k: 'Titles', v: '2,000+', sub: 'Shipped worldwide' },
+            { k: 'Partners', v: '200+', sub: 'AAA studios & publishers' },
+          ].map((item, idx) => (
+            <div
+              key={item.k}
+              className="animate-fade-in"
+              style={{ animationDelay: `${0.9 + idx * 0.06}s` }}
+            >
+              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-2">
+                — {item.k}
+              </div>
+              <div className="font-display text-3xl lg:text-4xl text-ink leading-none mb-2">
+                {item.v}
+              </div>
+              <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-ink-soft/70">
+                {item.sub}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 right-8 lg:right-14 hidden md:flex flex-col items-center gap-2 text-ink/35">
-        <span className="text-[9px] tracking-[0.45em] uppercase">Scroll</span>
-        <span className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent" />
+      {/* Scroll cue */}
+      <div className="absolute bottom-6 right-6 lg:right-12 hidden md:flex flex-col items-end gap-2 text-mute">
+        <span className="font-mono text-[9px] tracking-[0.3em] uppercase">
+          scroll
+        </span>
+        <span className="h-10 w-px bg-gradient-to-b from-ink/40 to-transparent" />
       </div>
     </section>
+  );
+}
+
+function EqVisualizer() {
+  return (
+    <div className="flex items-end gap-[2px] h-9" aria-hidden>
+      {EQ_BARS.map((i) => (
+        <span
+          key={i}
+          className="eq-bar"
+          style={{
+            height: '100%',
+            animationDelay: `${(i % 12) * 0.07}s`,
+            animationDuration: `${1.1 + (i % 5) * 0.15}s`,
+            opacity: 0.35 + ((i * 7) % 10) / 22,
+          }}
+        />
+      ))}
+    </div>
   );
 }

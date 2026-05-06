@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
-  { label: 'About', href: '#about' },
-  { label: 'Service', href: '#service' },
-  { label: 'Works', href: '#works' },
-  { label: 'Studios', href: '#studios' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Studio', href: '#about', no: '01' },
+  { label: 'Service', href: '#service', no: '02' },
+  { label: 'Works', href: '#works', no: '03' },
+  { label: 'Locations', href: '#studios', no: '04' },
+  { label: 'Contact', href: '#contact', no: '05' },
 ];
 
-const LANGS = ['KR', 'EN', 'JP', 'CN', 'DE'];
+const LANGS = ['EN', 'KR', 'JP', 'CN', 'DE'];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,58 +25,61 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background,backdrop-filter,border-color] duration-700 ${
         scrolled
-          ? 'bg-bg/90 backdrop-blur-xl border-b border-gold/15'
-          : 'bg-transparent'
+          ? 'bg-bg/85 backdrop-blur-xl border-b border-line'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1440px] px-8 lg:px-14 h-20 flex items-center justify-between">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <span className="font-display text-2xl tracking-[0.2em]">
-            <span className="gold-text">MUSAI</span>
+          <span className="font-display text-[22px] tracking-[-0.01em] text-ink">
+            Musai
           </span>
-          <span className="hidden md:inline-block h-3 w-px bg-gold/30" />
-          <span className="hidden md:inline-block text-[10px] tracking-[0.35em] uppercase text-ink/50">
-            Studio · Est. 1995
+          <span className="hidden md:inline-block h-3 w-px bg-line-2" />
+          <span className="hidden md:inline-block font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
+            Sound&nbsp;Studio · EST&nbsp;1995
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="relative text-[12px] tracking-[0.25em] uppercase text-ink/70 hover:text-gold transition-colors duration-500 group"
+              className="group flex items-baseline gap-1.5 text-[13px] text-ink/70 hover:text-ink transition-colors duration-500"
             >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" />
+              <span className="font-mono text-[9px] text-mute group-hover:text-ink/60 transition-colors">
+                {item.no}
+              </span>
+              <span className="tracking-tight">{item.label}</span>
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-5">
-          <div className="hidden lg:flex items-center gap-1 text-[10px] tracking-[0.25em] uppercase">
+          <div className="hidden lg:flex items-center font-mono text-[10px] tracking-[0.12em]">
             {LANGS.map((l, idx) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
                 className={`px-1.5 py-1 transition-colors ${
-                  lang === l ? 'text-gold' : 'text-ink/35 hover:text-ink/60'
+                  lang === l ? 'text-ink' : 'text-mute hover:text-ink/60'
                 }`}
               >
                 {l}
                 {idx < LANGS.length - 1 && (
-                  <span className="ml-1 text-ink/15">/</span>
+                  <span className="ml-1.5 text-mute/40">·</span>
                 )}
               </button>
             ))}
           </div>
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-gold border border-gold/40 px-5 py-2.5 hover:bg-gold hover:text-bg transition-all duration-500"
+            className="hidden md:inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-ink/85 border border-line-2 hover:border-ink/60 px-4 py-2 transition-colors duration-500"
           >
-            Inquire
+            <span className="rec-dot" />
+            Start a project
           </a>
         </div>
       </div>
