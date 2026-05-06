@@ -106,7 +106,7 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
         work.featured
           ? 'aspect-[16/10] lg:aspect-auto lg:min-h-[600px]'
           : 'aspect-[4/5] sm:aspect-[4/3]'
-      } border border-line hover:border-line-2 transition-colors duration-700 bg-bg`}
+      } bg-bg`}
     >
       {/* Real cover image with cinematic filter */}
       {work.cover ? (
@@ -210,7 +210,7 @@ export default function Portfolio() {
       />
 
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 auto-rows-[minmax(0,1fr)]">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-line/40 border-y border-line auto-rows-[minmax(0,1fr)]">
           {WORKS.map((work, idx) => (
             <ArtCard key={work.title} work={work} idx={idx} />
           ))}
