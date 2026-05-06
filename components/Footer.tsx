@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="relative border-t border-line-2 pt-16 lg:pt-20 pb-10">
+    <footer className="relative border-t border-line pt-16 lg:pt-20 pb-10">
       <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12">
         {/* Big quiet wordmark */}
         <div className="mb-14 lg:mb-16 grid grid-cols-12 gap-y-6 lg:gap-x-6 items-end">
@@ -8,16 +8,13 @@ export default function Footer() {
             <div className="font-display text-[clamp(3.5rem,16vw,15rem)] leading-[0.84] tracking-[-0.04em] text-ink">
               Musai<span className="italic text-ink-soft">.</span>
             </div>
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mt-6">
+            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-mute mt-6">
               Sound · Localization · Entertainment — Since 1995
             </p>
           </div>
           <div className="col-span-12 lg:col-span-3 lg:text-right">
             <p className="font-display italic text-2xl text-ink">
               Boost Your Play.
-            </p>
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-mute mt-3">
-              The Musai axiom
             </p>
           </div>
         </div>
@@ -29,11 +26,11 @@ export default function Footer() {
           />
           <FooterCol
             label="Service"
-            items={['Sound — Audio · Voice', 'L10N — Localization', 'Echo — Talent · IP']}
+            items={['Sound', 'L10N', 'Echo']}
           />
           <FooterCol
-            label="Locations"
-            items={['Seoul, KR · 37.5°N 127.0°E', 'Berlin, DE · 52.5°N 13.4°E']}
+            label="Studios"
+            items={['Seoul, KR', 'Berlin, DE']}
           />
           <FooterCol
             label="Connect"
@@ -46,15 +43,11 @@ export default function Footer() {
           />
         </div>
 
-        <div className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-start md:items-center gap-4 font-mono text-[10px] tracking-[0.18em] uppercase text-mute">
-          <span>© 2026 Musai Studio · All rights reserved</span>
+        <div className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-start md:items-center gap-4 font-mono text-[10px] tracking-[0.22em] uppercase text-mute">
+          <span>© 2026 Musai Studio</span>
           <div className="flex items-center gap-6">
             <span>Privacy</span>
             <span>Terms</span>
-            <span className="flex items-center gap-2 text-ink-soft">
-              <span className="rec-dot" />
-              Recording in Seoul · Berlin
-            </span>
           </div>
         </div>
       </div>
@@ -65,8 +58,8 @@ export default function Footer() {
 function FooterCol({ label, items }: { label: string; items: string[] }) {
   return (
     <div>
-      <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink mb-5">
-        — {label}
+      <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-ink-soft mb-5">
+        {label}
       </div>
       <ul className="space-y-2.5 text-[13px] text-ink-soft">
         {items.map((item) => (

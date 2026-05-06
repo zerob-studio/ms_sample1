@@ -59,13 +59,8 @@ export default function Contact() {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="border border-line-2 p-4 sm:p-7 lg:p-12 bg-elev/40 min-w-0"
+              className="border border-line p-4 sm:p-7 lg:p-12 min-w-0"
             >
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-8 lg:mb-10 font-mono text-[10px] tracking-[0.18em] uppercase">
-                <span className="text-ink">Project Brief</span>
-                <span className="text-mute">Confidential</span>
-              </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-2">
                 <Field label="Your name" required>
                   <input
@@ -119,10 +114,7 @@ export default function Contact() {
                 />
               </Field>
 
-              <div className="mt-10 lg:mt-12 flex flex-wrap items-center justify-between gap-4">
-                <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-mute">
-                  Reply within 24h
-                </p>
+              <div className="mt-10 lg:mt-12 flex flex-wrap items-center justify-end gap-4">
                 <button
                   type="submit"
                   disabled={submitted}

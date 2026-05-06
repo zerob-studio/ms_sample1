@@ -1,3 +1,5 @@
+import SectionHeader from './SectionHeader';
+
 const STATS = [
   { value: '30', suffix: '+', unit: 'Years', sub: 'Since 1995' },
   { value: '20', suffix: '+', unit: 'Studios', sub: 'Recording rooms' },
@@ -7,48 +9,52 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section id="numbers" className="relative bg-elev/40">
-      <div className="chapter-strip">
-        <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
-          <span className="text-ink flex items-center gap-2.5">
-            <span className="text-mute">— Ch.02</span>
-            <span className="text-mute/60">/</span>
-            <span>Numbers</span>
-          </span>
-          <span className="hidden md:inline text-mute truncate">
-            Three decades, in numbers
-          </span>
-          <span className="text-mute hidden sm:inline">FY 1995 — 2025</span>
-        </div>
-      </div>
+    <section id="numbers" className="relative">
+      <SectionHeader
+        no="02"
+        label="Numbers"
+        headline={
+          <>
+            Three decades, in <span className="italic">numbers</span>.
+          </>
+        }
+        description={<>우리가 쌓아온 시간은 결국 작품의 결로 돌아갑니다.</>}
+      />
 
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 py-16 lg:py-24">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
-          {STATS.map((stat, idx) => (
-            <div
-              key={stat.unit}
-              className="bg-bg p-4 sm:p-6 md:p-8 lg:p-10 min-w-0 overflow-hidden group hover:bg-elev/40 transition-colors duration-700"
-            >
-              <div className="flex items-baseline justify-between gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-mute mb-5 md:mb-8">
-                <span>0{idx + 1}</span>
-                <span className="truncate">{stat.unit}</span>
-              </div>
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
+        <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-line">
+          {STATS.map((stat, idx) => {
+            const classes = [
+              'min-w-0 border-line px-5 sm:px-7 lg:px-8 py-10 lg:py-14',
+              // mobile: left-border on right cell of each row
+              idx === 1 || idx === 3 ? 'border-l' : '',
+              // desktop only: middle cell needs its own left border
+              idx === 2 ? 'lg:border-l' : '',
+              // mobile only: top row gets bottom border, removed on desktop
+              idx < 2 ? 'border-b lg:border-b-0' : '',
+            ]
+              .filter(Boolean)
+              .join(' ');
+            return (
+              <div key={stat.unit} className={classes}>
+                <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink whitespace-nowrap">
+                  <span className="text-[clamp(2.2rem,7vw,5.4rem)]">
+                    {stat.value}
+                  </span>
+                  <span className="text-[clamp(1.1rem,3vw,2.4rem)] text-ink-soft/70 align-top ml-1">
+                    {stat.suffix}
+                  </span>
+                </div>
 
-              <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink whitespace-nowrap">
-                <span className="text-[clamp(1.9rem,7vw,5.6rem)]">
-                  {stat.value}
-                </span>
-                <span className="text-[clamp(1.1rem,3vw,2.6rem)] text-ink-soft/80 align-top ml-1">
-                  {stat.suffix}
-                </span>
+                <div className="mt-5 lg:mt-7 font-mono text-[10px] tracking-[0.22em] uppercase text-ink-soft truncate">
+                  {stat.unit}
+                </div>
+                <div className="mt-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-mute truncate">
+                  {stat.sub}
+                </div>
               </div>
-
-              <div className="mt-5 flex items-center gap-3 font-mono text-[10px] tracking-[0.14em] uppercase text-ink-soft min-w-0">
-                <span className="h-px w-6 bg-line-2 group-hover:w-12 group-hover:bg-ink/60 transition-all duration-700 shrink-0" />
-                <span className="truncate">{stat.sub}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
