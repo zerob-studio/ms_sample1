@@ -7,7 +7,7 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="relative bg-elev/40">
+    <section id="numbers" className="relative bg-elev/40">
       <div className="chapter-strip">
         <div className="mx-auto max-w-[1480px] px-6 lg:px-12 h-12 flex items-center justify-between font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase">
           <span className="text-ink flex items-center gap-2.5">

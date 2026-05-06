@@ -11,7 +11,7 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/library_hero.jpg',
     fallback: ['#1c1410', '#3a2418'],
-    span: 'lg:col-span-2 lg:row-span-2',
+    span: 'col-span-2 lg:col-span-2 lg:row-span-2',
     featured: true,
   },
   {
@@ -48,7 +48,7 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/library_hero.jpg',
     fallback: ['#0c1410', '#19241c'],
-    span: 'lg:col-span-2',
+    span: 'col-span-2 lg:col-span-2',
   },
   {
     title: 'League of Legends',
@@ -103,7 +103,9 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
   return (
     <article
       className={`group relative overflow-hidden cursor-pointer ${work.span} ${
-        work.featured ? 'aspect-square lg:aspect-auto lg:min-h-[600px]' : 'aspect-[4/3]'
+        work.featured
+          ? 'aspect-[16/10] lg:aspect-auto lg:min-h-[600px]'
+          : 'aspect-[4/5] sm:aspect-[4/3]'
       } border border-line hover:border-line-2 transition-colors duration-700 bg-bg`}
     >
       {/* Real cover image with cinematic filter */}
@@ -129,13 +131,13 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
       <div className="absolute inset-0 bg-bg/15" />
 
       {/* Top metadata strip */}
-      <div className="absolute top-0 left-0 right-0 p-4 lg:p-5 flex items-start justify-between font-mono text-[10px] tracking-[0.16em] uppercase z-10">
-        <span className="text-ink-soft">
+      <div className="absolute top-0 left-0 right-0 p-3 sm:p-4 lg:p-5 flex items-start justify-between font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase z-10 gap-2">
+        <span className="text-ink-soft shrink-0">
           № {String(idx + 1).padStart(2, '0')}
         </span>
-        <span className="text-ink-soft flex items-center gap-2">
+        <span className="text-ink-soft flex items-center gap-2 shrink-0">
           {work.featured && (
-            <span className="border border-ink/40 bg-bg/40 backdrop-blur-sm px-2 py-0.5 text-[9px] tracking-[0.2em] text-ink">
+            <span className="border border-ink/40 bg-bg/40 backdrop-blur-sm px-2 py-0.5 text-[8px] sm:text-[9px] tracking-[0.2em] text-ink">
               Featured
             </span>
           )}
@@ -144,31 +146,31 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
       </div>
 
       {/* Bottom content */}
-      <div className="absolute inset-x-0 bottom-0 p-5 lg:p-7 z-10">
-        <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-soft mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span>{work.category}</span>
-          <span className="text-mute">·</span>
-          <span>{work.channels}</span>
+      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 lg:p-7 z-10">
+        <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mb-2 sm:mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="truncate">{work.category}</span>
+          <span className="text-mute hidden sm:inline">·</span>
+          <span className="hidden sm:inline">{work.channels}</span>
           {work.runtime !== '—' && (
             <>
-              <span className="text-mute">·</span>
-              <span>{work.runtime}</span>
+              <span className="text-mute hidden md:inline">·</span>
+              <span className="hidden md:inline">{work.runtime}</span>
             </>
           )}
         </div>
         <h3
-          className={`font-display text-ink leading-[1.05] tracking-[-0.01em] mb-2 ${
+          className={`font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1.5 sm:mb-2 ${
             work.featured
-              ? 'text-3xl lg:text-5xl xl:text-6xl'
-              : 'text-2xl lg:text-3xl'
+              ? 'text-2xl sm:text-3xl lg:text-5xl xl:text-6xl'
+              : 'text-base sm:text-2xl lg:text-3xl'
           }`}
           style={{ textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}
         >
           {work.title}
         </h3>
-        <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-ink-soft mt-2 flex items-center justify-between">
-          <span>{work.publisher}</span>
-          <span className="text-ink/70 group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
+        <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ink-soft mt-1.5 sm:mt-2 flex items-center justify-between gap-2">
+          <span className="truncate">{work.publisher}</span>
+          <span className="shrink-0 text-ink/70 group-hover:text-ink group-hover:translate-x-1 transition-all duration-500">
             →
           </span>
         </p>
@@ -208,7 +210,7 @@ export default function Portfolio() {
       />
 
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 auto-rows-[minmax(0,1fr)]">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 auto-rows-[minmax(0,1fr)]">
           {WORKS.map((work, idx) => (
             <ArtCard key={work.title} work={work} idx={idx} />
           ))}

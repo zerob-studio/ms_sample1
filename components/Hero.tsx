@@ -2,7 +2,7 @@ const EQ_BARS = Array.from({ length: 48 }, (_, i) => i);
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden grain pt-16">
+    <section id="top" className="relative min-h-[100svh] w-full overflow-hidden grain pt-16">
       <div
         className="absolute inset-0"
         style={{
@@ -77,27 +77,22 @@ export default function Hero() {
           </div>
 
           <div
-            className="col-span-12 lg:col-span-5 flex flex-wrap items-end justify-start lg:justify-end gap-x-8 gap-y-4 animate-fade-up"
+            className="col-span-12 lg:col-span-5 flex flex-wrap items-end justify-start lg:justify-end gap-3 sm:gap-4 animate-fade-up"
             style={{ animationDelay: '0.72s' }}
           >
             <a
               href="#works"
-              className="group inline-flex items-baseline gap-3 text-[14px] md:text-[15px] text-ink border-b border-ink/40 hover:border-ink pb-2 transition-colors"
+              className="group inline-flex items-center gap-3 text-[13px] md:text-[14px] tracking-tight text-bg bg-ink hover:bg-ink-soft px-5 sm:px-6 py-3 sm:py-3.5 transition-colors duration-500"
             >
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mute group-hover:text-ink/70 transition-colors">
-                01
-              </span>
               <span>View selected works</span>
               <span className="font-display italic transition-transform duration-500 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#service"
-              className="group inline-flex items-baseline gap-3 text-[14px] md:text-[15px] text-ink-soft hover:text-ink transition-colors"
+              className="group inline-flex items-center gap-2 text-[13px] md:text-[14px] tracking-tight text-ink border border-line-2 hover:border-ink/60 px-5 sm:px-6 py-3 sm:py-3.5 transition-colors duration-500"
             >
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mute group-hover:text-ink/70 transition-colors">
-                02
-              </span>
-              <span>The Studio</span>
+              <span>About the studio</span>
+              <span className="opacity-60 group-hover:opacity-100 transition-opacity">→</span>
             </a>
           </div>
         </div>

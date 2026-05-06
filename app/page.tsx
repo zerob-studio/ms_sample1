@@ -8,11 +8,13 @@ import Clients from '@/components/Clients';
 import Studios from '@/components/Studios';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import SectionScroller from '@/components/SectionScroller';
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative overflow-x-hidden">
       <Header />
+      <SectionScroller />
       <Hero />
       <About />
       <Stats />
