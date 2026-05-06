@@ -11,7 +11,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/library_hero.jpg',
     fallback: ['#1c1410', '#3a2418'],
-    span: 'col-span-2 lg:col-span-2 lg:row-span-2',
     featured: true,
   },
   {
@@ -24,7 +23,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_hero.jpg',
     fallback: ['#0d141c', '#1b2536'],
-    span: '',
   },
   {
     title: 'Red Dead Redemption 2',
@@ -36,7 +34,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg',
     fallback: ['#1a1009', '#2e1c0e'],
-    span: '',
   },
   {
     title: 'The Witcher 3',
@@ -48,7 +45,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/library_hero.jpg',
     fallback: ['#0c1410', '#19241c'],
-    span: 'col-span-2 lg:col-span-2',
   },
   {
     title: 'League of Legends',
@@ -59,7 +55,6 @@ const WORKS = [
     channels: 'Stereo',
     cover: null,
     fallback: ['#0a1426', '#172a4a'],
-    span: '',
   },
   {
     title: 'Modern Warfare',
@@ -71,7 +66,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/library_hero.jpg',
     fallback: ['#15110e', '#28201a'],
-    span: '',
   },
   {
     title: 'Wuthering Waves',
@@ -82,7 +76,6 @@ const WORKS = [
     channels: '5.1',
     cover: null,
     fallback: ['#140d1a', '#241638'],
-    span: '',
   },
   {
     title: 'Borderlands',
@@ -94,7 +87,6 @@ const WORKS = [
     cover:
       'https://cdn.cloudflare.steamstatic.com/steam/apps/397540/library_hero.jpg',
     fallback: ['#1a1208', '#2e2010'],
-    span: '',
   },
 ];
 
@@ -102,11 +94,7 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
   const [c1, c2] = work.fallback;
   return (
     <article
-      className={`group relative overflow-hidden cursor-pointer ${work.span} ${
-        work.featured
-          ? 'aspect-[16/10] lg:aspect-auto lg:min-h-[600px]'
-          : 'aspect-[4/5] sm:aspect-[4/3]'
-      } bg-bg`}
+      className="group relative overflow-hidden cursor-pointer aspect-[4/5] sm:aspect-[4/3] bg-bg"
     >
       {/* Real cover image with cinematic filter */}
       {work.cover ? (
@@ -159,11 +147,7 @@ function ArtCard({ work, idx }: { work: (typeof WORKS)[number]; idx: number }) {
           )}
         </div>
         <h3
-          className={`font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1.5 sm:mb-2 ${
-            work.featured
-              ? 'text-2xl sm:text-3xl lg:text-5xl xl:text-6xl'
-              : 'text-base sm:text-2xl lg:text-3xl'
-          }`}
+          className="font-display text-ink leading-[1.05] tracking-[-0.01em] mb-1.5 sm:mb-2 text-base sm:text-xl lg:text-2xl"
           style={{ textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}
         >
           {work.title}
@@ -210,7 +194,7 @@ export default function Portfolio() {
       />
 
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12 pb-24 lg:pb-36">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-line/40 border-y border-line auto-rows-[minmax(0,1fr)]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-line/40 border-y border-line">
           {WORKS.map((work, idx) => (
             <ArtCard key={work.title} work={work} idx={idx} />
           ))}

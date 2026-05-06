@@ -28,6 +28,13 @@ body {
   max-width: 100vw;
 }
 
+/* Belt-and-suspenders: every section clips its own horizontal overflow.
+   `clip` (vs. hidden) doesn't create a new scroll container or affect
+   position:fixed descendants — safer for fixed UI like SectionScroller. */
+section {
+  overflow-x: clip;
+}
+
 ::selection {
   background: var(--color-ink);
   color: var(--color-bg);

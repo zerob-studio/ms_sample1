@@ -1,4 +1,4 @@
-const EQ_BARS = Array.from({ length: 48 }, (_, i) => i);
+const EQ_BARS = Array.from({ length: 24 }, (_, i) => i);
 
 export default function Hero() {
   return (
@@ -48,13 +48,13 @@ export default function Hero() {
         {/* Main headline — reduced indent on mobile */}
         <h1 className="font-display tracking-[-0.02em]">
           <span
-            className="block text-[clamp(2.6rem,11vw,12rem)] leading-[0.94] text-ink animate-fade-up"
+            className="block text-[clamp(2rem,11vw,12rem)] leading-[0.94] text-ink animate-fade-up"
             style={{ animationDelay: '0.15s' }}
           >
             Sound that
           </span>
           <span
-            className="block text-[clamp(2.6rem,11vw,12rem)] leading-[0.94] italic text-ink animate-fade-up pl-[clamp(0.5rem,8vw,10rem)]"
+            className="block text-[clamp(2rem,11vw,12rem)] leading-[0.94] italic text-ink animate-fade-up pl-[clamp(0.25rem,8vw,10rem)]"
             style={{ animationDelay: '0.32s' }}
           >
             ships globally.
