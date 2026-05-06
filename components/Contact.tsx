@@ -10,9 +10,8 @@ export default function Contact() {
     <section id="contact" className="relative overflow-x-hidden">
       <SectionHeader
         no="07"
-        label="Begin"
-        caption="Brief us. We'll reply within 24h."
-        meta="Open · 2025/26"
+        label="Contact"
+        topic="문의 — Start a brief."
         headline={
           <>
             Let&apos;s craft your next{' '}

@@ -28,6 +28,7 @@ export default function Studios() {
       <SectionHeader
         no="06"
         label="Studios"
+        topic="스튜디오 — Where we are."
         headline={
           <>
             Recording on{' '}
@@ -44,7 +45,7 @@ export default function Studios() {
               className="grid grid-cols-12 gap-y-8 lg:gap-12 py-12 lg:py-20 border-b border-line"
             >
               <div className="col-span-12 lg:col-span-5">
-                <h3 className="font-display text-[clamp(2.6rem,7vw,5.6rem)] leading-[0.95] tracking-[-0.03em] text-ink">
+                <h3 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] tracking-[-0.03em] text-ink">
                   {studio.city}
                 </h3>
                 <p className="font-kr text-[13.5px] text-ink-soft mt-3 tracking-[0.05em]">

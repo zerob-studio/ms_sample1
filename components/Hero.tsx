@@ -26,13 +26,13 @@ export default function Hero() {
         {/* Headline */}
         <h1 className="font-display tracking-[-0.025em]">
           <span
-            className="block text-[clamp(2.4rem,11vw,12rem)] leading-[0.94] text-ink animate-fade-up"
+            className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] text-ink animate-fade-up"
             style={{ animationDelay: '0.15s' }}
           >
             Sound that
           </span>
           <span
-            className="block text-[clamp(2.4rem,11vw,12rem)] leading-[0.94] italic text-ink animate-fade-up"
+            className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] italic text-ink animate-fade-up"
             style={{ animationDelay: '0.32s' }}
           >
             ships globally.

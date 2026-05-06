@@ -41,9 +41,8 @@ export default function Clients() {
     <section id="clients" className="relative">
       <SectionHeader
         no="05"
-        label="Trust"
-        caption="Studios & publishers, worldwide"
-        meta="200+ partners"
+        label="Clients"
+        topic="글로벌 파트너 — Who trusts us."
         headline={
           <>
             From Seoul to Berlin,{' '}

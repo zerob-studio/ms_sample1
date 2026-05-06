@@ -126,6 +126,7 @@ export default function Portfolio() {
       <SectionHeader
         no="04"
         label="Works"
+        topic="셀렉티드 워크 — What we shipped."
         headline={
           <>
             Stories the world{' '}

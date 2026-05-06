@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 
 const CHAPTERS = [
-  { id: 'top', short: 'Musai' },
-  { id: 'about', short: 'Studio' },
+  { id: 'top', short: 'Top' },
+  { id: 'about', short: 'About' },
   { id: 'numbers', short: 'Numbers' },
-  { id: 'service', short: 'Service' },
+  { id: 'service', short: 'Services' },
   { id: 'works', short: 'Works' },
-  { id: 'clients', short: 'Trust' },
+  { id: 'clients', short: 'Clients' },
   { id: 'studios', short: 'Studios' },
   { id: 'contact', short: 'Contact' },
 ];

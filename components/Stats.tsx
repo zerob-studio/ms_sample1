@@ -13,6 +13,7 @@ export default function Stats() {
       <SectionHeader
         no="02"
         label="Numbers"
+        topic="실적 — By the numbers."
         headline={
           <>
             Three decades, in <span className="italic">numbers</span>.
@@ -38,10 +39,10 @@ export default function Stats() {
             return (
               <div key={stat.unit} className={classes}>
                 <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink whitespace-nowrap">
-                  <span className="text-[clamp(2.2rem,7vw,5.4rem)]">
+                  <span className="text-[clamp(1.85rem,5.6vw,4.4rem)]">
                     {stat.value}
                   </span>
-                  <span className="text-[clamp(1.1rem,3vw,2.4rem)] text-ink-soft/70 align-top ml-1">
+                  <span className="text-[clamp(0.95rem,2.4vw,2rem)] text-ink-soft/70 align-top ml-1">
                     {stat.suffix}
                   </span>
                 </div>

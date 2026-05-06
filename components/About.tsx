@@ -5,7 +5,8 @@ export default function About() {
     <section id="about" className="relative overflow-hidden">
       <SectionHeader
         no="01"
-        label="Studio"
+        label="About"
+        topic="회사 소개 — Who we are."
         headline={
           <>
             A studio for{' '}
@@ -59,7 +60,7 @@ export default function About() {
         {/* Pull quote */}
         <div className="mt-24 lg:mt-36">
           <div className="max-w-4xl">
-            <p className="font-display text-[clamp(1.6rem,3.4vw,3rem)] text-ink leading-[1.4] tracking-[-0.015em]">
+            <p className="font-display text-[clamp(1.4rem,2.6vw,2.3rem)] text-ink leading-[1.45] tracking-[-0.015em]">
               <span className="italic">We don&apos;t dub.</span> We translate
               emotion across cultures and preserve the original creative
               intent — that&apos;s the bar we hold for every title that ships

@@ -42,7 +42,8 @@ export default function Services() {
     <section id="service" className="relative">
       <SectionHeader
         no="03"
-        label="Service"
+        label="Services"
+        topic="우리의 작업 — What we do."
         headline={
           <>
             Sound, Localization,{' '}
@@ -66,7 +67,7 @@ export default function Services() {
               </div>
 
               <div className="col-span-12 lg:col-span-4">
-                <h3 className="font-display text-[clamp(2.4rem,5vw,4rem)] leading-none tracking-[-0.025em] text-ink">
+                <h3 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-none tracking-[-0.025em] text-ink">
                   {service.title}
                 </h3>
                 <p className="font-kr text-[13px] text-ink-soft mt-3 tracking-[0.04em]">
