@@ -1,7 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import SectionHeader from './SectionHeader';
+import { useIsMobileOrLowPower } from './hooks/useIsMobileOrLowPower';
+
+const PortfolioHoverShader = dynamic(() => import('./effects/PortfolioHoverShader'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const WORKS = [
   {
@@ -79,12 +86,34 @@ const WORKS = [
 function ArtCard({ work }: { work: (typeof WORKS)[number] }) {
   const [c1, c2] = work.fallback;
   const [imgFailed, setImgFailed] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const imageBoxRef = useRef<HTMLDivElement | null>(null);
+  const isLite = useIsMobileOrLowPower();
   const showImage = work.cover && !imgFailed;
+  const enableShader = showImage && !isLite;
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!enableShader || !imageBoxRef.current) return;
+    const r = imageBoxRef.current.getBoundingClientRect();
+    setMouse({
+      x: (e.clientX - r.left) / r.width,
+      y: 1 - (e.clientY - r.top) / r.height, // shader UV is bottom-up
+    });
+  };
 
   return (
-    <article className="group flex flex-col cursor-pointer">
+    <article
+      className="group flex flex-col cursor-pointer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       {/* Image area */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-bg">
+      <div
+        ref={imageBoxRef}
+        onMouseMove={onMove}
+        className="relative aspect-[4/3] overflow-hidden bg-bg"
+      >
         <div
           className="absolute inset-0 transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
           style={{
@@ -100,6 +129,9 @@ function ArtCard({ work }: { work: (typeof WORKS)[number] }) {
             onError={() => setImgFailed(true)}
             className="poster-cover absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
           />
+        )}
+        {enableShader && (
+          <PortfolioHoverShader src={work.cover!} active={hovered} mouse={mouse} />
         )}
       </div>
 

@@ -1,17 +1,14 @@
+import HeroBackground from './effects/HeroBackground';
+
 export default function Hero() {
   return (
     <section
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden grain pt-16 flex items-center"
     >
-      {/* Quiet base */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(180deg, #0a0a0b 0%, #0c0c0d 60%, #0a0a0b 100%)',
-        }}
-      />
+      {/* Three.js particle field (desktop) / CSS glow fallback (mobile).
+          Replaces the old static gradient — same base color tones. */}
+      <HeroBackground />
 
       <div className="relative w-full mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 py-24 lg:py-28">
         {/* Eyebrow — single quiet line */}

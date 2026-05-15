@@ -51,12 +51,18 @@ export default function Clients() {
         }
       />
 
-      {/* Marquee */}
-      <div className="relative overflow-hidden border-y border-line py-8 mb-16 lg:mb-20 bg-elev/30">
+      {/* Marquee — infinite scroll, GPU-accelerated, slows on hover */}
+      <div
+        className="group/marquee relative overflow-hidden border-y border-line py-8 mb-16 lg:mb-20 bg-elev/30"
+        aria-label="Trusted partners"
+      >
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee whitespace-nowrap will-change-transform">
+        <div
+          className="flex animate-marquee whitespace-nowrap will-change-transform [animation-duration:48s] hover:[animation-duration:120s] transition-[animation-duration] duration-700"
+          style={{ animationTimingFunction: 'linear' }}
+        >
           {[...CLIENTS, ...CLIENTS].map((client, idx) => (
             <div
               key={`${client}-${idx}`}
