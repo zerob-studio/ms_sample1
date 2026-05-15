@@ -35,6 +35,11 @@ const FS = /* glsl */ `
   uniform float uIntensity;
   varying vec2 vUv;
 
+  // cheap hash noise
+  float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+  }
+
   void main() {
     vec2 uv = vUv;
     vec2 toMouse = uv - uMouse;
@@ -54,6 +59,19 @@ const FS = /* glsl */ `
 
     // warm studio grade to match palette
     col = mix(col, col * vec3(1.06, 1.03, 0.95), 0.35);
+
+    // SCANLINES — horizontal lines pulsing slowly down
+    float lineDensity = 320.0;
+    float scan = sin((uv.y + uTime * 0.04) * lineDensity);
+    col -= 0.045 * smoothstep(0.0, 1.0, scan);
+
+    // NOISE — film-grain over the image
+    float n = hash(uv * 1024.0 + vec2(uTime * 12.0, 0.0));
+    col += (n - 0.5) * 0.07 * uIntensity;
+
+    // moving horizontal "tear" band — rare but visible
+    float band = step(0.98, sin(uTime * 0.7 + uv.y * 14.0)) * 0.15;
+    col += vec3(band) * uIntensity;
 
     gl_FragColor = vec4(col, 1.0);
   }

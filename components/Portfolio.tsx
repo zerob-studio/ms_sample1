@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import SectionHeader from './SectionHeader';
 import { useIsMobileOrLowPower } from './hooks/useIsMobileOrLowPower';
@@ -88,10 +88,31 @@ function ArtCard({ work }: { work: (typeof WORKS)[number] }) {
   const [imgFailed, setImgFailed] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const [visible, setVisible] = useState(false);
   const imageBoxRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLElement | null>(null);
   const isLite = useIsMobileOrLowPower();
   const showImage = work.cover && !imgFailed;
   const enableShader = showImage && !isLite;
+
+  // scroll-in tilt observer
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const el = cardRef.current;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!enableShader || !imageBoxRef.current) return;
@@ -104,7 +125,8 @@ function ArtCard({ work }: { work: (typeof WORKS)[number] }) {
 
   return (
     <article
-      className="group flex flex-col cursor-pointer"
+      ref={cardRef}
+      className={`group flex flex-col cursor-pointer card-tilt-in card-3d ${visible ? 'is-visible' : ''}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -183,7 +205,10 @@ export default function Portfolio() {
 
       <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-12 pb-24 lg:pb-36">
         <div className="border-t border-line">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-16 gap-x-4 sm:gap-x-6 lg:gap-x-8 pt-12 lg:pt-16">
+          <div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-16 gap-x-4 sm:gap-x-6 lg:gap-x-8 pt-12 lg:pt-16"
+            style={{ perspective: '1400px' }}
+          >
             {WORKS.map((work) => (
               <ArtCard key={work.title} work={work} />
             ))}

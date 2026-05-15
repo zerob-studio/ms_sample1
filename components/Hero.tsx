@@ -1,6 +1,11 @@
+'use client';
+
 import HeroBackground from './effects/HeroBackground';
+import LetterReveal from './effects/LetterReveal';
+import { useIsMobileOrLowPower } from './hooks/useIsMobileOrLowPower';
 
 export default function Hero() {
+  const isLite = useIsMobileOrLowPower();
   return (
     <section
       id="top"
@@ -20,19 +25,13 @@ export default function Hero() {
           <span>Sound · Localization · Entertainment</span>
         </div>
 
-        {/* Headline */}
+        {/* Headline — per-letter reveal on desktop, plain on mobile */}
         <h1 className="font-display tracking-[-0.025em]">
-          <span
-            className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] text-ink animate-fade-up"
-            style={{ animationDelay: '0.15s' }}
-          >
-            Sound that
+          <span className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] text-ink">
+            <LetterReveal text="Sound that" delay={0.15} stagger={0.04} lite={isLite} />
           </span>
-          <span
-            className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] italic text-ink animate-fade-up"
-            style={{ animationDelay: '0.32s' }}
-          >
-            ships globally.
+          <span className="block text-[clamp(2.1rem,9vw,9.5rem)] leading-[0.94] italic text-ink">
+            <LetterReveal text="ships globally." delay={0.55} stagger={0.04} lite={isLite} />
           </span>
         </h1>
 

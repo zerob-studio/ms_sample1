@@ -1,4 +1,8 @@
+'use client';
+
 import SectionHeader from './SectionHeader';
+import CountUp from './effects/CountUp';
+import { useIsMobileOrLowPower } from './hooks/useIsMobileOrLowPower';
 
 const STATS = [
   { value: '30', suffix: '+', unit: 'Years', sub: 'Since 1995' },
@@ -8,6 +12,7 @@ const STATS = [
 ];
 
 export default function Stats() {
+  const isLite = useIsMobileOrLowPower();
   return (
     <section id="numbers" className="relative">
       <SectionHeader
@@ -27,21 +32,21 @@ export default function Stats() {
           {STATS.map((stat, idx) => {
             const classes = [
               'min-w-0 border-line px-5 sm:px-7 lg:px-8 py-10 lg:py-14',
-              // mobile: left-border on right cell of each row
               idx === 1 || idx === 3 ? 'border-l' : '',
-              // desktop only: middle cell needs its own left border
               idx === 2 ? 'lg:border-l' : '',
-              // mobile only: top row gets bottom border, removed on desktop
               idx < 2 ? 'border-b lg:border-b-0' : '',
             ]
               .filter(Boolean)
               .join(' ');
             return (
               <div key={stat.unit} className={classes}>
-                <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink whitespace-nowrap">
-                  <span className="text-[clamp(1.85rem,5.6vw,4.4rem)]">
-                    {stat.value}
-                  </span>
+                <div className="font-display leading-[0.92] tracking-[-0.04em] text-ink whitespace-nowrap tabular-nums">
+                  <CountUp
+                    target={stat.value}
+                    duration={1600}
+                    lite={isLite}
+                    className="text-[clamp(1.85rem,5.6vw,4.4rem)]"
+                  />
                   <span className="text-[clamp(0.95rem,2.4vw,2rem)] text-ink-soft/70 align-top ml-1">
                     {stat.suffix}
                   </span>
